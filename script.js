@@ -1,28 +1,42 @@
 "use strict";
 
 /* ==========================================
-   MOON JOURNEY v3
+   MOON JOURNEY v4
 ========================================== */
 
 /* =========================
-DOM ELEMENTS
+DOM
 ========================= */
 
-const intro = document.getElementById("intro");
-const journey = document.getElementById("journey");
-const slider = document.getElementById("slider");
+const intro =
+document.getElementById("intro");
 
-const beginButton = document.getElementById("beginButton");
-const previousButton = document.getElementById("previousButton");
-const nextButton = document.getElementById("nextButton");
+const journey =
+document.getElementById("journey");
 
-const progress = document.getElementById("progress");
+const slider =
+document.getElementById("slider");
+
+const beginButton =
+document.getElementById("beginButton");
+
+const previousButton =
+document.getElementById("previousButton");
+
+const nextButton =
+document.getElementById("nextButton");
+
+const progress =
+document.getElementById("progress");
+
+const musicButton =
+document.getElementById("musicButton");
 
 const backgroundMusic =
 document.getElementById("backgroundMusic");
 
-const musicButton =
-document.getElementById("musicButton");
+const backgroundVideo =
+document.getElementById("backgroundVideo");
 
 const loadingScreen =
 document.getElementById("loadingScreen");
@@ -39,6 +53,9 @@ document.getElementById("blessingVerse");
 const blessingReference =
 document.getElementById("blessingReference");
 
+const lastMessageButton =
+document.getElementById("lastMessageButton");
+
 const letterSection =
 document.getElementById("letterSection");
 
@@ -48,19 +65,16 @@ document.getElementById("letterText");
 const replayButton =
 document.getElementById("replayButton");
 
-const lastMessageButton =
-document.getElementById("lastMessageButton");
-
 
 /* =========================
-APP STATE
+STATE
 ========================= */
 
 let currentSlide = 0;
 
 let musicPlaying = false;
 
-let journeyStarted = false;
+let totalSlides = 18;
 
 
 /* =========================
@@ -76,9 +90,50 @@ function pad(number){
 function updateProgress(){
 
     progress.textContent =
-    `${pad(currentSlide+1)} / 18`;
+    `${pad(currentSlide+1)} / ${pad(totalSlides)}`;
 
 }
+
+
+/* =========================
+VIDEO
+========================= */
+
+window.addEventListener("load",async()=>{
+
+    try{
+
+        backgroundVideo.muted=true;
+
+        backgroundVideo.loop=true;
+
+        backgroundVideo.playsInline=true;
+
+        await backgroundVideo.play();
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+    }
+
+    setTimeout(()=>{
+
+        loadingScreen.style.opacity="0";
+
+        loadingScreen.style.pointerEvents="none";
+
+        setTimeout(()=>{
+
+            loadingScreen.style.display="none";
+
+        },800);
+
+    },1500);
+
+});
 
 
 /* =========================
@@ -98,183 +153,329 @@ reference:"Psalm 20:4"
 JOURNEY DATA
 ========================= */
 
-const journeyData = [
+const journeyData=[
 
 {
-    year:2009,
-    date:"03 August",
-    image:"2009.png",
-    phase:"Full Moon",
-    illumination:"100%",
-    title:"The Beginning",
-    wish:"Every beautiful story begins with a single moment. On this day, God gifted the world with a precious life."
-},
 
-{
-    year:2010,
-    date:"03 August",
-    image:"2010.png",
-    phase:"Waning Gibbous",
-    illumination:"95%",
-    title:"A Little Light",
-    wish:"Another year, another beautiful chapter. May every small moment become a treasured memory."
-},
+year:2009,
 
-{
-    year:2011,
-    date:"03 August",
-    image:"2011.png",
-    phase:"Last Quarter",
-    illumination:"50%",
-    title:"Growing Every Day",
-    wish:"With every passing year, your story became richer with love, learning, and hope."
+date:"03 August",
+
+image:"2009.png",
+
+phase:"Full Moon",
+
+illumination:"100%",
+
+title:"The Beginning",
+
+wish:"Every beautiful story begins with a single moment. On this day, God gifted the world with a precious life."
+
 },
 
 {
-    year:2012,
-    date:"03 August",
-    image:"2012.png",
-    phase:"Waxing Crescent",
-    illumination:"24%",
-    title:"Grace",
-    wish:"May every step you take continue to be guided by grace, wisdom, and quiet strength."
+
+year:2010,
+
+date:"03 August",
+
+image:"2010.png",
+
+phase:"Waning Gibbous",
+
+illumination:"95%",
+
+title:"A Little Light",
+
+wish:"Another year, another beautiful chapter. May every small moment become a treasured memory."
+
 },
 
 {
-    year:2013,
-    date:"03 August",
-    image:"2013.png",
-    phase:"New Moon",
-    illumination:"2%",
-    title:"Hope",
-    wish:"Even when the sky is darkest, hope patiently waits to shine again."
-},
-{
-    year:2014,
-    date:"03 August",
-    image:"2014.png",
-    phase:"Waxing Crescent",
-    illumination:"44%",
-    title:"Wonder",
-    wish:"May you always keep a heart that is kind, a mind that continues to learn, and a spirit that never stops believing."
+
+year:2011,
+
+date:"03 August",
+
+image:"2011.png",
+
+phase:"Last Quarter",
+
+illumination:"50%",
+
+title:"Growing Every Day",
+
+wish:"With every passing year, your story became richer with love, learning, and hope."
+
 },
 
 {
-    year:2015,
-    date:"03 August",
-    image:"2015.png",
-    phase:"Waning Gibbous",
-    illumination:"88%",
-    title:"Small Moments",
-    wish:"Some of life's greatest blessings arrive quietly. May you always recognize them and treasure them."
+
+year:2012,
+
+date:"03 August",
+
+image:"2012.png",
+
+phase:"Waxing Crescent",
+
+illumination:"24%",
+
+title:"Grace",
+
+wish:"May every step you take continue to be guided by grace, wisdom, and quiet strength."
+
 },
 
 {
-    year:2016,
-    date:"03 August",
-    image:"2016.png",
-    phase:"New Moon",
-    illumination:"1%",
-    title:"New Beginnings",
-    wish:"Every ending gently prepares us for a new beginning. May every season lead you closer to God's purpose."
+
+year:2013,
+
+date:"03 August",
+
+image:"2013.png",
+
+phase:"New Moon",
+
+illumination:"2%",
+
+title:"Hope",
+
+wish:"Even when the sky is darkest, hope patiently waits to shine again."
+
 },
 
 {
-    year:2017,
-    date:"03 August",
-    image:"2017.png",
-    phase:"Waxing Gibbous",
-    illumination:"82%",
-    title:"Quiet Strength",
-    wish:"True strength is often found in patience, faith, and the courage to keep moving forward."
+
+year:2014,
+
+date:"03 August",
+
+image:"2014.png",
+
+phase:"Waxing Crescent",
+
+illumination:"44%",
+
+title:"Wonder",
+
+wish:"May you always keep a heart that is kind, a mind that continues to learn, and a spirit that never stops believing."
+
 },
 
 {
-    year:2018,
-    date:"03 August",
-    image:"2018.png",
-    phase:"Waning Gibbous",
-    illumination:"91%",
-    title:"A Beautiful Story",
-    wish:"Every year has added another meaningful page to your story. May the chapters ahead be filled with peace and joy."
-},
-{
-    year:2019,
-    date:"03 August",
-    image:"2019.png",
-    phase:"Waxing Crescent",
-    illumination:"5%",
-    title:"Becoming",
-    wish:"Growth is often so quiet that we hardly notice it. Yet every season has shaped you into someone wiser, kinder, and stronger."
+
+year:2015,
+
+date:"03 August",
+
+image:"2015.png",
+
+phase:"Waning Gibbous",
+
+illumination:"88%",
+
+title:"Small Moments",
+
+wish:"Some of life's greatest blessings arrive quietly. May you always recognize them and treasure them."
+
 },
 
 {
-    year:2020,
-    date:"03 August",
-    image:"2020.png",
-    phase:"Full Moon",
-    illumination:"100%",
-    title:"Light Through Every Season",
-    wish:"Even during uncertain moments, hope continues to shine. May your heart always find peace, even in the darkest nights."
+
+year:2016,
+
+date:"03 August",
+
+image:"2016.png",
+
+phase:"New Moon",
+
+illumination:"1%",
+
+title:"New Beginnings",
+
+wish:"Every ending gently prepares us for a new beginning. May every season lead you closer to God's purpose."
+
+},
+{
+
+year:2017,
+
+date:"03 August",
+
+image:"2017.png",
+
+phase:"Waxing Gibbous",
+
+illumination:"82%",
+
+title:"Quiet Strength",
+
+wish:"True strength is often found in patience, faith, and the courage to keep moving forward."
+
 },
 
 {
-    year:2021,
-    date:"03 August",
-    image:"2021.png",
-    phase:"Waning Crescent",
-    illumination:"32%",
-    title:"Faith Over Fear",
-    wish:"May every challenge become a lesson, every unanswered prayer become hope, and every tomorrow remind you that God walks beside you."
+
+year:2018,
+
+date:"03 August",
+
+image:"2018.png",
+
+phase:"Waning Gibbous",
+
+illumination:"91%",
+
+title:"A Beautiful Story",
+
+wish:"Every year has added another meaningful page to your story. May the chapters ahead be filled with peace and joy."
+
 },
 
 {
-    year:2022,
-    date:"03 August",
-    image:"2022.png",
-    phase:"Waxing Crescent",
-    illumination:"30%",
-    title:"Walking Forward",
-    wish:"The future is filled with endless possibilities. Walk into it with faith, courage, and a heart that never stops believing."
+
+year:2019,
+
+date:"03 August",
+
+image:"2019.png",
+
+phase:"Waxing Crescent",
+
+illumination:"5%",
+
+title:"Becoming",
+
+wish:"Growth is often so quiet that we hardly notice it. Yet every season has shaped you into someone wiser, kinder, and stronger."
+
 },
 
 {
-    year:2023,
-    date:"03 August",
-    image:"2023.png",
-    phase:"Waning Gibbous",
-    illumination:"95%",
-    title:"A Gentle Presence",
-    wish:"May your kindness continue to brighten every life you touch, just as the moon gently brightens the night sky."
-},
-{
-    year:2024,
-    date:"03 August",
-    image:"2024.png",
-    phase:"Waning Crescent",
-    illumination:"14%",
-    title:"A New Horizon",
-    wish:"May every new day bring fresh hope, quiet joy, and the courage to become the person God created you to be."
+
+year:2020,
+
+date:"03 August",
+
+image:"2020.png",
+
+phase:"Full Moon",
+
+illumination:"100%",
+
+title:"Light Through Every Season",
+
+wish:"Even during uncertain moments, hope continues to shine. May your heart always find peace, even in the darkest nights."
+
 },
 
 {
-    year:2025,
-    date:"03 August",
-    image:"2025.png",
-    phase:"Waxing Gibbous",
-    illumination:"82%",
-    title:"Grace In Every Step",
-    wish:"You have already come so far. May your journey ahead be guided by wisdom, surrounded by love, and strengthened by God's grace."
+
+year:2021,
+
+date:"03 August",
+
+image:"2021.png",
+
+phase:"Waning Crescent",
+
+illumination:"32%",
+
+title:"Faith Over Fear",
+
+wish:"May every challenge become a lesson, every unanswered prayer become hope, and every tomorrow remind you that God walks beside you."
+
 },
 
 {
-    year:2026,
-    date:"03 August",
-    image:"2026.png",
-    phase:"Waning Gibbous",
-    illumination:"75%",
-    title:"Seventeen Years Under This Sky",
-    wish:"Seventeen years have become a beautiful story of faith, hope, growth, and countless memories. As another chapter begins, may your heart remain peaceful, your dreams stay alive, and may God continue to guide every step of your journey."
+
+year:2022,
+
+date:"03 August",
+
+image:"2022.png",
+
+phase:"Waxing Crescent",
+
+illumination:"30%",
+
+title:"Walking Forward",
+
+wish:"The future is filled with endless possibilities. Walk into it with faith, courage, and a heart that never stops believing."
+
+},
+
+{
+
+year:2023,
+
+date:"03 August",
+
+image:"2023.png",
+
+phase:"Waning Gibbous",
+
+illumination:"95%",
+
+title:"A Gentle Presence",
+
+wish:"May your kindness continue to brighten every life you touch, just as the moon gently brightens the night sky."
+
+},
+
+{
+
+year:2024,
+
+date:"03 August",
+
+image:"2024.png",
+
+phase:"Waning Crescent",
+
+illumination:"14%",
+
+title:"A New Horizon",
+
+wish:"May every new day bring fresh hope, quiet joy, and the courage to become the person God created you to be."
+
+},
+
+{
+
+year:2025,
+
+date:"03 August",
+
+image:"2025.png",
+
+phase:"Waxing Gibbous",
+
+illumination:"82%",
+
+title:"Grace In Every Step",
+
+wish:"You have already come so far. May your journey ahead be guided by wisdom, surrounded by love, and strengthened by God's grace."
+
+},
+
+{
+
+year:2026,
+
+date:"03 August",
+
+image:"2026.png",
+
+phase:"Waning Gibbous",
+
+illumination:"75%",
+
+title:"Seventeen Years Under This Sky",
+
+wish:"Seventeen years have become a beautiful story of faith, hope, growth, and countless memories. As another chapter begins, may your heart remain peaceful, your dreams stay alive, and may God continue to guide every step of your journey."
+
 }
 
 ];
@@ -292,7 +493,7 @@ function createJourney(){
 
         const slide=document.createElement("section");
 
-        slide.className="slide";
+        slide.className="slide fade-in";
 
         slide.innerHTML=`
 
@@ -365,6 +566,8 @@ function createJourney(){
     updateProgress();
 
 }
+
+
 /* =========================
 BEGIN JOURNEY
 ========================= */
@@ -382,13 +585,14 @@ beginButton.addEventListener("click",()=>{
     createJourney();
 
     slider.scrollTo({
+
         left:0,
+
         behavior:"auto"
+
     });
 
     updateProgress();
-
-    journeyStarted=true;
 
     backgroundMusic.play().catch(()=>{});
 
@@ -442,114 +646,27 @@ nextButton.addEventListener("click",()=>{
 
         updateProgress();
 
+        /* Last Moon Hold */
+
         if(currentSlide===TOTAL_SLIDES-1){
 
-            setTimeout(showFinalBlessing,7000);
+            nextButton.disabled=true;
+
+            previousButton.disabled=true;
+
+            setTimeout(()=>{
+
+                showFinalBlessing();
+
+                nextButton.disabled=false;
+
+                previousButton.disabled=false;
+
+            },8000);
 
         }
 
     }
-
-});
-/* =========================
-MUSIC BUTTON
-========================= */
-
-musicButton.addEventListener("click",()=>{
-
-    if(musicPlaying){
-
-        backgroundMusic.pause();
-
-        musicPlaying=false;
-
-        musicButton.textContent="♫";
-
-    }
-
-    else{
-
-        backgroundMusic.play().catch(()=>{});
-
-        musicPlaying=true;
-
-        musicButton.textContent="❚❚";
-
-    }
-
-});
-
-
-/* =========================
-SLIDER SCROLL
-========================= */
-
-slider.addEventListener("scroll",()=>{
-
-    const index=Math.round(
-
-        slider.scrollLeft/
-
-        slider.clientWidth
-
-    );
-
-    if(index!==currentSlide){
-
-        currentSlide=index;
-
-        updateProgress();
-
-    }
-
-});
-
-
-/* =========================
-LOADING SCREEN
-========================= */
-window.addEventListener("load", async () => {
-
-    const video = document.getElementById("backgroundVideo");
-
-    try{
-
-        video.muted = true;
-
-        video.loop = true;
-
-        video.playsInline = true;
-
-        await video.play();
-
-    }catch(e){
-
-        console.log(e);
-
-    }
-
-    loadingScreen.style.opacity = "0";
-
-    loadingScreen.style.pointerEvents = "none";
-
-    setTimeout(()=>{
-
-        loadingScreen.style.display="none";
-
-    },700);
-
-});
-
-
-/* =========================
-IMAGE PRELOAD
-========================= */
-
-journeyData.forEach((item)=>{
-
-    const image=new Image();
-
-    image.src=item.image;
 
 });
 /* =========================
@@ -575,43 +692,39 @@ function showFinalBlessing(){
 
 
 /* =========================
-ONE LAST MESSAGE
+ONE LAST BLESSING
 ========================= */
 
 lastMessageButton.addEventListener("click",()=>{
-
-    showLetter();
-
-});
-
-
-/* =========================
-FINAL LETTER
-========================= */
-
-function showLetter(){
 
     finalSection.style.display="none";
 
     letterSection.style.display="flex";
 
-    letterText.textContent=`Happy Birthday. 🤍
+    letterText.textContent=
 
-As you look back at every moon that has watched over your journey, remember that every season has shaped you into who you are today.
+`Happy Birthday.
 
-May God continue to guide your path, strengthen your heart, and fill your future with peace, wisdom, and joy.
+As you look back at every moon that has watched over your journey,
+remember that every season has shaped you into who you are today.
 
-May every dream He has placed within you bloom in His perfect time.
+May God continue to guide your path,
+strengthen your heart,
+and fill your future with peace,
+wisdom,
+joy,
+and endless hope.
 
-May your smile never fade.
-May your faith never weaken.
-May your heart always remain peaceful.
+May every dream He has placed within you
+bloom in His perfect time.
 
 Happy 17th Birthday.
 
-God bless you always. 🌙🤍`;
+God bless you always.
 
-}
+✝️🤍`;
+
+});
 
 
 /* =========================
@@ -622,15 +735,13 @@ replayButton.addEventListener("click",()=>{
 
     letterSection.style.display="none";
 
-    finalSection.style.display="none";
-
     intro.style.display="flex";
 
     journey.style.display="none";
 
-    journey.classList.remove("active");
-
     currentSlide=0;
+
+    updateProgress();
 
     slider.scrollTo({
 
@@ -640,17 +751,61 @@ replayButton.addEventListener("click",()=>{
 
     });
 
-    backgroundMusic.pause();
+});
 
-    backgroundMusic.currentTime=0;
 
-    musicPlaying=false;
+/* =========================
+MUSIC BUTTON
+========================= */
 
-    musicButton.textContent="♫";
+musicButton.addEventListener("click",()=>{
 
-    updateProgress();
+    if(musicPlaying){
+
+        backgroundMusic.pause();
+
+        musicButton.textContent="♫";
+
+    }
+
+    else{
+
+        backgroundMusic.play().catch(()=>{});
+
+        musicButton.textContent="❚❚";
+
+    }
+
+    musicPlaying=!musicPlaying;
 
 });
+
+
+/* =========================
+SLIDER
+========================= */
+
+slider.addEventListener("scroll",()=>{
+
+    const index=Math.round(
+
+        slider.scrollLeft/
+
+        slider.clientWidth
+
+    );
+
+    if(index!==currentSlide){
+
+        currentSlide=index;
+
+        updateProgress();
+
+    }
+
+});
+
+
 /* =========================
 INITIALIZE
 ========================= */
@@ -661,8 +816,6 @@ journey.classList.remove("active");
 
 journey.style.display="none";
 
-intro.style.display="flex";
-
 finalSection.style.display="none";
 
 letterSection.style.display="none";
@@ -671,44 +824,121 @@ musicButton.textContent="♫";
 
 
 /* =========================
+PRELOAD IMAGES
+========================= */
+
+journeyData.forEach(item=>{
+
+    const img=new Image();
+
+    img.src=item.image;
+
+});
+
+
+console.log("🌙 Moon Journey v4 Ready");
+/* =========================
 BACKGROUND VIDEO
 ========================= */
 
-const backgroundVideo =
-document.getElementById("backgroundVideo");
+window.addEventListener("load", async()=>{
 
-if(backgroundVideo){
+    try{
 
-    backgroundVideo.muted=true;
+        backgroundVideo.muted=true;
 
-    backgroundVideo.play().catch(()=>{
+        backgroundVideo.loop=true;
 
-        console.log("Background video autoplay blocked.");
+        backgroundVideo.playsInline=true;
 
-    });
+        backgroundVideo.setAttribute("autoplay","");
+
+        backgroundVideo.setAttribute("muted","");
+
+        await backgroundVideo.play();
+
+    }
+
+    catch(error){
+
+        console.log("Video autoplay blocked");
+
+    }
+
+    setTimeout(()=>{
+
+        loadingScreen.style.opacity="0";
+
+        loadingScreen.style.pointerEvents="none";
+
+        setTimeout(()=>{
+
+            loadingScreen.style.display="none";
+
+        },800);
+
+    },1800);
+
+});
+
+
+/* =========================
+FADE TRANSITION
+========================= */
+
+function fadeScreen(element){
+
+    element.classList.remove("fade-in");
+
+    void element.offsetWidth;
+
+    element.classList.add("fade-in");
 
 }
 
 
 /* =========================
-CONSOLE
+BEGIN JOURNEY EFFECT
 ========================= */
 
-console.log("🌙 Moon Journey v3 Loaded Successfully");
+beginButton.addEventListener("click",()=>{
 
-console.log("Total Slides :",TOTAL_SLIDES);
-
-console.log("Journey Ready ✅");
-window.addEventListener("load", () => {
-
-    const video = document.getElementById("backgroundVideo");
-
-    video.muted = true;
-
-    video.play().catch(() => {
-
-        console.log("Autoplay blocked");
-
-    });
+    fadeScreen(journey);
 
 });
+
+
+/* =========================
+FINAL CLEANUP
+========================= */
+
+document.addEventListener("visibilitychange",()=>{
+
+    if(document.hidden){
+
+        backgroundMusic.pause();
+
+    }
+
+    else{
+
+        if(musicPlaying){
+
+            backgroundMusic.play().catch(()=>{});
+
+        }
+
+    }
+
+});
+
+
+/* =========================
+END
+========================= */
+
+console.log("🌙 Moon Journey v4 Loaded Successfully");
+
+console.log("✨ Cinematic Edition");
+
+console.log("🙏 God Bless");
