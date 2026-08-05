@@ -1,643 +1,313 @@
-"use strict";
-
-/* =========================
-DOM
-========================= */
-
-const intro = document.getElementById("intro");
-const journey = document.getElementById("journey");
-const slider = document.getElementById("slider");
-
-const beginButton = document.getElementById("beginButton");
-const previousButton = document.getElementById("previousButton");
-const nextButton = document.getElementById("nextButton");
-
-const progress = document.getElementById("progress");
-
-const backgroundVideo =
-document.getElementById("backgroundVideo");
-
-const backgroundMusic =
-document.getElementById("backgroundMusic");
-
-const musicButton =
-document.getElementById("musicButton");
-
-const loadingScreen =
-document.getElementById("loadingScreen");
-
-const finalSection =
-document.getElementById("finalSection");
-
-const blessingTitle =
-document.getElementById("blessingTitle");
-
-const blessingVerse =
-document.getElementById("blessingVerse");
-
-const blessingReference =
-document.getElementById("blessingReference");
-
-const lastMessageButton =
-document.getElementById("lastMessageButton");
-
-const letterSection =
-document.getElementById("letterSection");
-
-const letterText =
-document.getElementById("letterText");
-
-const replayButton =
-document.getElementById("replayButton");
-
-
-/* =========================
-STATE
-========================= */
-
-let currentSlide = 0;
-
-let musicPlaying = false;
-
-
-/* =========================
-HELPERS
-========================= */
-
-function pad(number){
-
-    return String(number).padStart(2,"0");
-
-}
-
-function updateProgress(){
-
-    progress.textContent =
-    `${pad(currentSlide+1)} / 18`;
-
-}
-
-
-/* =========================
-LOADING
-========================= */
-
-window.addEventListener("load",()=>{
-
-    setTimeout(()=>{
-
-        loadingScreen.style.opacity="0";
-
-        loadingScreen.style.pointerEvents="none";
-
-        setTimeout(()=>{
-
-            loadingScreen.style.display="none";
-
-        },700);
-
-    },1800);
-
-});
-
-
-/* =========================
-FINAL BLESSING DATA
-========================= */
-
-const finalBlessing={
-
-title:"A Blessing For Your Journey",
-
-verse:"May He give you the desire of your heart and make all your plans succeed.",
-
-reference:"Psalm 20:4"
-
-};
-/* =========================
-JOURNEY DATA
-========================= */
-
-const journeyData = [
-
-{
-year:2009,
-date:"03 August",
-image:"2009.png",
-phase:"Full Moon",
-illumination:"100%",
-title:"The Beginning",
-wish:"Every beautiful story begins with a single moment. On this day, God gifted the world with a precious life."
-},
-
-{
-year:2010,
-date:"03 August",
-image:"2010.png",
-phase:"Waning Gibbous",
-illumination:"95%",
-title:"A Little Light",
-wish:"Another year, another beautiful chapter. May every small moment become a treasured memory."
-},
-
-{
-year:2011,
-date:"03 August",
-image:"2011.png",
-phase:"Last Quarter",
-illumination:"50%",
-title:"Growing Every Day",
-wish:"With every passing year, your story became richer with love, learning, and hope."
-},
-
-{
-year:2012,
-date:"03 August",
-image:"2012.png",
-phase:"Waxing Crescent",
-illumination:"24%",
-title:"Grace",
-wish:"May every step you take continue to be guided by grace, wisdom, and quiet strength."
-},
-
-{
-year:2013,
-date:"03 August",
-image:"2013.png",
-phase:"New Moon",
-illumination:"2%",
-title:"Hope",
-wish:"Even when the sky is darkest, hope patiently waits to shine again."
-},
-
-{
-year:2014,
-date:"03 August",
-image:"2014.png",
-phase:"Waxing Crescent",
-illumination:"44%",
-title:"Wonder",
-wish:"May you always keep a heart that is kind, a mind that continues to learn, and a spirit that never stops believing."
-},
-
-{
-year:2015,
-date:"03 August",
-image:"2015.png",
-phase:"Waning Gibbous",
-illumination:"88%",
-title:"Small Moments",
-wish:"Some of life's greatest blessings arrive quietly. May you always recognize them and treasure them."
-},
-
-{
-year:2016,
-date:"03 August",
-image:"2016.png",
-phase:"New Moon",
-illumination:"1%",
-title:"New Beginnings",
-wish:"Every ending gently prepares us for a new beginning. May every season lead you closer to God's purpose."
-},
-
-{
-year:2017,
-date:"03 August",
-image:"2017.png",
-phase:"Waxing Gibbous",
-illumination:"82%",
-title:"Quiet Strength",
-wish:"True strength is often found in patience, faith, and the courage to keep moving forward."
-},
-
-{
-year:2018,
-date:"03 August",
-image:"2018.png",
-phase:"Waning Gibbous",
-illumination:"91%",
-title:"A Beautiful Story",
-wish:"Every year has added another meaningful page to your story. May the chapters ahead be filled with peace and joy."
-},
-    
-{
-year:2019,
-date:"03 August",
-image:"2019.png",
-phase:"Waxing Crescent",
-illumination:"5%",
-title:"Becoming",
-wish:"Growth is often so quiet that we hardly notice it. Yet every season has shaped you into someone wiser, kinder, and stronger."
-},
-
-{
-year:2020,
-date:"03 August",
-image:"2020.png",
-phase:"Full Moon",
-illumination:"100%",
-title:"Light Through Every Season",
-wish:"Even during uncertain moments, hope continues to shine. May your heart always find peace, even in the darkest nights."
-},
-
-{
-year:2021,
-date:"03 August",
-image:"2021.png",
-phase:"Waning Crescent",
-illumination:"32%",
-title:"Faith Over Fear",
-wish:"May every challenge become a lesson, every unanswered prayer become hope, and every tomorrow remind you that God walks beside you."
-},
-
-{
-year:2022,
-date:"03 August",
-image:"2022.png",
-phase:"Waxing Crescent",
-illumination:"30%",
-title:"Walking Forward",
-wish:"The future is filled with endless possibilities. Walk into it with faith, courage, and a heart that never stops believing."
-},
-
-{
-year:2023,
-date:"03 August",
-image:"2023.png",
-phase:"Waning Gibbous",
-illumination:"95%",
-title:"A Gentle Presence",
-wish:"May your kindness continue to brighten every life you touch, just as the moon gently brightens the night sky."
-},
-
-{
-year:2024,
-date:"03 August",
-image:"2024.png",
-phase:"Waning Crescent",
-illumination:"14%",
-title:"A New Horizon",
-wish:"May every new day bring fresh hope, quiet joy, and the courage to become the person God created you to be."
-},
-
-{
-year:2025,
-date:"03 August",
-image:"2025.png",
-phase:"Waxing Gibbous",
-illumination:"82%",
-title:"Grace In Every Step",
-wish:"You have already come so far. May your journey ahead be guided by wisdom, surrounded by love, and strengthened by God's grace."
-},
-
-{
-year:2026,
-date:"03 August",
-image:"2026.png",
-phase:"Waning Gibbous",
-illumination:"75%",
-title:"Seventeen Years Under This Sky",
-wish:"Seventeen years have become a beautiful story of faith, hope, growth, and countless memories. As another chapter begins, may your heart remain peaceful, your dreams stay alive, and may God continue to guide every step of your journey."
-}
-
-];
-
-const TOTAL_SLIDES = journeyData.length;
-/* =========================
-CREATE JOURNEY
-========================= */
-
-function createJourney(){
-
-slider.innerHTML="";
-
-journeyData.forEach((item)=>{
-
-const slide=document.createElement("section");
-
-slide.className="slide";
-
-slide.innerHTML=`
-
-<div class="slide-content">
-
-<p class="chapter">
-
-CHAPTER
-
-</p>
-
-<p class="date">
-
-${item.date}
-
-</p>
-
-<h1 class="year">
-
-${item.year}
-
-</h1>
-
-<img
-src="${item.image}"
-class="moon-image">
-
-<p class="phase">
-
-${item.phase}
-
-</p>
-
-<p class="illumination">
-
-${item.illumination} illuminated
-
-</p>
-
-<h2 class="slide-title">
-
-${item.title}
-
-</h2>
-
-<p class="wish">
-
-${item.wish}
-
-</p>
-
-${
-item.year===2026?
-
-`<div id="crossButton"
-style="
-margin-top:35px;
-font-size:52px;
-cursor:pointer;
-animation:pulse 1.5s infinite;
-">
-
-✝️
-
-</div>`
-
-:
-
-`<p class="swipe">
-
-Swipe • Tap Next →
-
-</p>`
-
-}
-
-</div>
-
-`;
-
-slider.appendChild(slide);
-
-});
-
-updateProgress();
-
-}
-
-
-/* =========================
-BEGIN JOURNEY
-========================= */
-
-beginButton.addEventListener("click",()=>{
-
-intro.style.display="none";
-
-journey.classList.add("active");
-
-backgroundVideo.style.display="block";
-
-backgroundVideo.play().catch(()=>{});
-
-backgroundMusic.play().catch(()=>{});
-
-musicPlaying=true;
-
-musicButton.textContent="❚❚";
-
-currentSlide=0;
-
-createJourney();
-
-updateProgress();
-
-});
-/* =========================
-PREVIOUS
-========================= */
-
-previousButton.addEventListener("click",()=>{
-
-if(currentSlide===0)return;
-
-currentSlide--;
-
-slider.scrollTo({
-
-left:slider.clientWidth*currentSlide,
-
-behavior:"smooth"
-
-});
-
-updateProgress();
-
-});
-
-
-/* =========================
-NEXT
-========================= */
-
-nextButton.addEventListener("click",()=>{
-
-if(currentSlide>=TOTAL_SLIDES-1)return;
-
-currentSlide++;
-
-slider.scrollTo({
-
-left:slider.clientWidth*currentSlide,
-
-behavior:"smooth"
-
-});
-
-updateProgress();
-
-});
-
-
-/* =========================
-SLIDER
-========================= */
-
-slider.addEventListener("scroll",()=>{
-
-const index=Math.round(
-
-slider.scrollLeft/
-
-slider.clientWidth
-
-);
-
-if(index!==currentSlide){
-
-currentSlide=index;
-
-updateProgress();
-
-}
-
-});
-
-
-/* =========================
-CROSS BUTTON
-========================= */
-
-document.addEventListener("click",(e)=>{
-
-if(e.target.id==="crossButton"){
-
-journey.style.display="none";
-
-finalSection.style.display="flex";
-
-blessingTitle.textContent=
-
-finalBlessing.title;
-
-blessingVerse.textContent=
-
-`"${finalBlessing.verse}"`;
-
-blessingReference.textContent=
-
-finalBlessing.reference;
-
-}
-
-});
-
-
-/* =========================
-LAST MESSAGE
-========================= */
-
-lastMessageButton.addEventListener("click",()=>{
-
-finalSection.style.display="none";
-
-letterSection.style.display="flex";
-
-letterText.textContent=
-
-`Happy Birthday.
-
-Every moon has silently watched
-your beautiful journey.
-
-May God bless you,
-protect you,
-guide every step you take,
-and fill your life with
-peace,
-joy,
-hope
-and endless love.
-
-Happy 17th Birthday.
-
-God Bless You Always.
-
-✝️🤍`;
-
-});
-
-
-/* =========================
-REPLAY
-========================= */
-
-replayButton.addEventListener("click",()=>{
-
-letterSection.style.display="none";
-
-journey.style.display="none";
-
-intro.style.display="flex";
-
-backgroundVideo.pause();
-
-backgroundVideo.currentTime=0;
-
-backgroundVideo.style.display="none";
-
-backgroundMusic.pause();
-
-musicPlaying=false;
-
-musicButton.textContent="♫";
-
-currentSlide=0;
-
-updateProgress();
-
-});
-
-
-/* =========================
-MUSIC BUTTON
-========================= */
-
-musicButton.addEventListener("click",()=>{
-
-if(musicPlaying){
-
-backgroundMusic.pause();
-
-musicButton.textContent="♫";
-
-}else{
-
-backgroundMusic.play().catch(()=>{});
-
-musicButton.textContent="❚❚";
-
-}
-
-musicPlaying=!musicPlaying;
-
-});
-
-
-/* =========================
-INITIALIZE
-========================= */
-
-journey.style.display="none";
-
-finalSection.style.display="none";
-
-letterSection.style.display="none";
-
-backgroundVideo.style.display="none";
-
-musicButton.textContent="♫";
-
-updateProgress();
-
-console.log("🌙 Moon Journey v5 Loaded Successfully");
-   
+/* =================================================================
+   MOON JOURNEY — script.js
+   Handles: loading sequence, intro, slide generation & navigation,
+   background video/music, blessing + letter screens, replay/reset.
+================================================================= */
+
+(function () {
+  "use strict";
+
+  /* ---------------------------------------------------------
+     DATA — one entry per year. Add/edit freely; everything
+     below (chapter numbers, moon image src, progress count)
+     is derived automatically from this array's length.
+  --------------------------------------------------------- */
+  const JOURNEY_DATA = [
+    { year: 2009, phase: "Waning Gibbous",  illumination: "90%",  title: "Where It Began",       wish: "A story started quietly, and heaven was already smiling." },
+    { year: 2010, phase: "First Quarter",   illumination: "50%",  title: "Small Wonders",         wish: "Every small step you took was already part of something bigger." },
+    { year: 2011, phase: "First Quarter",   illumination: "50%",  title: "Learning to Shine",     wish: "Light doesn't need to be loud to be seen." },
+    { year: 2012, phase: "Full Moon",       illumination: "100%", title: "Roots and Wings",       wish: "Growing steady, reaching further than you knew." },
+    { year: 2013, phase: "Waning Gibbous",  illumination: "93%",  title: "Gentle Seasons",        wish: "Even the quiet years were shaping something beautiful." },
+    { year: 2014, phase: "Waxing Crescent", illumination: "12%",  title: "Braver Than You Knew",  wish: "Courage looked good on you, even when you didn't feel it." },
+    { year: 2015, phase: "Waxing Crescent", illumination: "12%",  title: "Held Through It All",   wish: "Some years test us — and still, grace carried you." },
+    { year: 2016, phase: "First Quarter",   illumination: "50%",  title: "New Horizons",          wish: "The world opened wider, and you walked toward it." },
+    { year: 2017, phase: "First Quarter",   illumination: "50%",  title: "Quiet Strength",        wish: "Not every strength roars. Some simply stays." },
+    { year: 2018, phase: "Waxing Gibbous",  illumination: "78%",  title: "Becoming",              wish: "You were never finished — only ever becoming." },
+    { year: 2019, phase: "Waxing Gibbous",  illumination: "65%",  title: "Faith Over Fear",       wish: "Even on uncertain nights, you chose to trust the light." },
+    { year: 2020, phase: "Full Moon",       illumination: "100%", title: "Still Standing",        wish: "The world paused, but your spirit never stopped shining." },
+    { year: 2021, phase: "Waxing Crescent", illumination: "20%",  title: "Rebuilding, Gently",    wish: "Healing takes time, and you gave yourself that grace." },
+    { year: 2022, phase: "Waxing Crescent", illumination: "45%",  title: "Rediscovery",           wish: "You found pieces of yourself you thought you'd lost." },
+    { year: 2023, phase: "Waxing Gibbous",  illumination: "65%",  title: "Deeper Roots",          wish: "Steadier, wiser, more fully yourself than ever." },
+    { year: 2024, phase: "New Moon",        illumination: "3%",   title: "Radiant",               wish: "Something in you finally caught up to how bright you've always been." },
+    { year: 2025, phase: "Waxing Gibbous",  illumination: "78%",  title: "Fully Alive",           wish: "This was a year you lived, not just survived." },
+    { year: 2026, phase: "Waxing Gibbous",  illumination: "63%",  title: "This Year, Beloved",    wish: "And now, this year — may it be your brightest yet." }
+  ];
+
+  const TOTAL_SLIDES = JOURNEY_DATA.length;
+
+  /* ---------------------------------------------------------
+     STATE
+  --------------------------------------------------------- */
+  let currentSlide = 0;
+  let musicPlaying = false;
+  let touchStartX = null;
+  let touchStartY = null;
+
+  /* ---------------------------------------------------------
+     DOM REFERENCES
+  --------------------------------------------------------- */
+  const loadingScreen   = document.getElementById("loading-screen");
+  const introScreen     = document.getElementById("intro-screen");
+  const journey         = document.getElementById("journey");
+  const slidesTrack     = document.getElementById("slides-track");
+  const blessingScreen  = document.getElementById("blessing-screen");
+  const letterScreen    = document.getElementById("letter-screen");
+
+  const bgVideo   = document.getElementById("bg-video");
+  const bgAudio   = document.getElementById("bg-audio");
+  const musicBtn  = document.getElementById("music-toggle");
+
+  const beginBtn        = document.getElementById("begin-btn");
+  const navPrev         = document.getElementById("nav-prev");
+  const navNext         = document.getElementById("nav-next");
+  const progressCurrent = document.getElementById("progress-current");
+  const progressTotal   = document.getElementById("progress-total");
+  const lastMessageBtn  = document.getElementById("last-message-btn");
+  const replayBtn       = document.getElementById("replay-btn");
+
+  /* ---------------------------------------------------------
+     INIT
+  --------------------------------------------------------- */
+  document.addEventListener("DOMContentLoaded", init);
+
+  function init() {
+    progressTotal.textContent = String(TOTAL_SLIDES).padStart(2, "0");
+    buildSlides();
+    attachEvents();
+
+    // Loading screen is visible by default and fades itself out via CSS
+    // (animation defined in style.css). We reveal the intro screen once
+    // that fade has had time to complete.
+    window.setTimeout(() => {
+      loadingScreen.classList.add("hidden");
+      introScreen.classList.remove("hidden");
+    }, 3000);
+  }
+
+  /* ---------------------------------------------------------
+     BUILD SLIDES
+  --------------------------------------------------------- */
+  function buildSlides() {
+    const fragment = document.createDocumentFragment();
+
+    JOURNEY_DATA.forEach((entry, index) => {
+      const chapterNumber = String(index + 1).padStart(2, "0");
+      const isLast = index === TOTAL_SLIDES - 1;
+
+      const slide = document.createElement("div");
+      slide.className = "slide";
+      slide.dataset.index = String(index);
+
+      slide.innerHTML = `
+        <div class="slide-card">
+          <p class="slide-chapter">Chapter ${chapterNumber}</p>
+          <p class="slide-date">${chapterNumber} of ${TOTAL_SLIDES} &middot; A Year of the Journey</p>
+          <h2 class="slide-year">${entry.year}</h2>
+
+          <div class="moon-frame">
+            <div class="moon-frame-glow"></div>
+            <img src="${entry.year}.png" alt="Moon, ${entry.year}"
+                 onerror="this.style.opacity='0.15';">
+          </div>
+
+          <div class="moon-meta">
+            <span>Phase &middot; <b>${entry.phase}</b></span>
+            <span>Illumination &middot; <b>${entry.illumination}</b></span>
+          </div>
+
+          <h3 class="slide-title">${entry.title}</h3>
+          <p class="slide-wish">${entry.wish}</p>
+
+          ${
+            isLast
+              ? `<div class="slide-cross" id="final-cross" role="button" aria-label="Continue">✝️</div>`
+              : `<p class="slide-hint">Swipe &bull; Tap Next →</p>`
+          }
+        </div>
+      `;
+
+      fragment.appendChild(slide);
+    });
+
+    slidesTrack.appendChild(fragment);
+  }
+
+  /* ---------------------------------------------------------
+     EVENTS
+  --------------------------------------------------------- */
+  function attachEvents() {
+    beginBtn.addEventListener("click", beginJourney);
+    musicBtn.addEventListener("click", toggleMusic);
+
+    navPrev.addEventListener("click", () => goToSlide(currentSlide - 1));
+    navNext.addEventListener("click", () => goToSlide(currentSlide + 1));
+
+    // Tap anywhere on the active (non-final) slide to advance
+    slidesTrack.addEventListener("click", (e) => {
+      const slideEl = e.target.closest(".slide");
+      if (!slideEl) return;
+      if (e.target.closest("#final-cross")) return; // handled separately
+      const isLastSlide = currentSlide === TOTAL_SLIDES - 1;
+      if (!isLastSlide) goToSlide(currentSlide + 1);
+    });
+
+    // Final cross tap -> blessing screen
+    slidesTrack.addEventListener("click", (e) => {
+      if (e.target.closest("#final-cross")) {
+        showBlessing();
+      }
+    });
+
+    // Swipe navigation
+    slidesTrack.addEventListener("touchstart", onTouchStart, { passive: true });
+    slidesTrack.addEventListener("touchend", onTouchEnd, { passive: true });
+
+    lastMessageBtn.addEventListener("click", showLetter);
+    replayBtn.addEventListener("click", replayJourney);
+  }
+
+  function onTouchStart(e) {
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+  }
+
+  function onTouchEnd(e) {
+    if (touchStartX === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX;
+    const deltaY = e.changedTouches[0].clientY - touchStartY;
+
+    if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (deltaX < 0) {
+        goToSlide(currentSlide + 1);
+      } else {
+        goToSlide(currentSlide - 1);
+      }
+    }
+    touchStartX = null;
+    touchStartY = null;
+  }
+
+  /* ---------------------------------------------------------
+     INTRO -> JOURNEY
+  --------------------------------------------------------- */
+  function beginJourney() {
+    introScreen.classList.add("screen-exit");
+
+    window.setTimeout(() => {
+      introScreen.classList.add("hidden");
+      introScreen.classList.remove("screen-exit");
+
+      journey.classList.remove("hidden");
+      musicBtn.classList.remove("hidden");
+
+      startBackgroundVideo();
+      startMusic();
+      renderSlide(0);
+    }, 650);
+  }
+
+  function startBackgroundVideo() {
+    bgVideo.currentTime = 0;
+    bgVideo.classList.add("active");
+    const playPromise = bgVideo.play();
+    if (playPromise && playPromise.catch) {
+      playPromise.catch(() => {
+        /* Autoplay may be blocked until user interacts; the tap that
+           triggered beginJourney counts as that interaction on most
+           browsers, but we fail silently otherwise. */
+      });
+    }
+  }
+
+  function startMusic() {
+    bgAudio.volume = 0.85;
+    const playPromise = bgAudio.play();
+    if (playPromise && playPromise.then) {
+      playPromise
+        .then(() => {
+          musicPlaying = true;
+          musicBtn.classList.remove("paused");
+        })
+        .catch(() => {
+          musicPlaying = false;
+          musicBtn.classList.add("paused");
+        });
+    }
+  }
+
+  function toggleMusic() {
+    if (musicPlaying) {
+      bgAudio.pause();
+      musicPlaying = false;
+      musicBtn.classList.add("paused");
+    } else {
+      bgAudio.play().then(() => {
+        musicPlaying = true;
+        musicBtn.classList.remove("paused");
+      }).catch(() => {});
+    }
+  }
+
+  /* ---------------------------------------------------------
+     SLIDE NAVIGATION
+  --------------------------------------------------------- */
+  function goToSlide(index) {
+    if (index < 0 || index > TOTAL_SLIDES - 1) return;
+    renderSlide(index);
+  }
+
+  function renderSlide(index) {
+    currentSlide = index;
+
+    const allSlides = slidesTrack.querySelectorAll(".slide");
+    allSlides.forEach((el) => el.classList.remove("active"));
+    allSlides[index].classList.add("active");
+
+    progressCurrent.textContent = String(index + 1).padStart(2, "0");
+
+    navPrev.disabled = index === 0;
+    navNext.disabled = index === TOTAL_SLIDES - 1;
+  }
+
+  /* ---------------------------------------------------------
+     BLESSING / LETTER
+  --------------------------------------------------------- */
+  function showBlessing() {
+    journey.classList.add("hidden");
+    blessingScreen.classList.remove("hidden");
+  }
+
+  function showLetter() {
+    blessingScreen.classList.add("hidden");
+    letterScreen.classList.remove("hidden");
+  }
+
+  /* ---------------------------------------------------------
+     REPLAY / RESET
+  --------------------------------------------------------- */
+  function replayJourney() {
+    // Stop media
+    bgAudio.pause();
+    bgAudio.currentTime = 0;
+    musicPlaying = false;
+    musicBtn.classList.add("paused");
+
+    bgVideo.pause();
+    bgVideo.currentTime = 0;
+    bgVideo.classList.remove("active");
+
+    // Hide everything except intro
+    letterScreen.classList.add("hidden");
+    blessingScreen.classList.add("hidden");
+    journey.classList.add("hidden");
+    musicBtn.classList.add("hidden");
+
+    // Reset progress
+    currentSlide = 0;
+    renderSlide(0);
+
+    // Show intro again
+    introScreen.classList.remove("hidden");
+  }
+})();
+     
