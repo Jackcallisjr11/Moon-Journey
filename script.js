@@ -699,3 +699,16 @@ console.log("🌙 Moon Journey v3 Loaded Successfully");
 console.log("Total Slides :",TOTAL_SLIDES);
 
 console.log("Journey Ready ✅");
+window.addEventListener("load", () => {
+
+    const video = document.getElementById("backgroundVideo");
+
+    video.muted = true;
+
+    video.play().catch(() => {
+
+        console.log("Autoplay blocked");
+
+    });
+
+});
