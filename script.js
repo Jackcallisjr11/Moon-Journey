@@ -219,7 +219,7 @@ illumination:"91%",
 title:"A Beautiful Story",
 wish:"Every year has added another meaningful page to your story. May the chapters ahead be filled with peace and joy."
 },
-];
+    
 {
 year:2019,
 date:"03 August",
