@@ -1,235 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Moon Journey — for Dr Kat</title>
+<meta name="description" content="A cinematic birthday journey through the years, for Dr Kat.">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Moon Journey</title>
-
-<link rel="stylesheet" href="style.css">
-
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- LOADING -->
-
-<div id="loadingScreen" class="loading-screen">
-
-<div class="loader"></div>
-
-<p>Preparing your journey...</p>
-
+<!-- ============================================= -->
+<!-- LOADING SCREEN -->
+<!-- ============================================= -->
+<div id="loading-screen" class="loading-screen">
+  <div class="loader-moon">
+    <div class="loader-moon-core"></div>
+    <div class="loader-ring"></div>
+  </div>
+  <p class="loader-text">Preparing your journey<span class="loader-dots"><span>.</span><span>.</span><span>.</span></span></p>
 </div>
 
-<!-- BACKGROUND VIDEO -->
-
-<video
-id="backgroundVideo"
-class="background-video"
-loop
-muted
-playsinline>
-
-<source src="background.mp4" type="video/mp4">
-
+<!-- ============================================= -->
+<!-- BACKGROUND VIDEO (starts hidden, plays after Begin Journey) -->
+<!-- ============================================= -->
+<video id="bg-video" class="bg-video" muted loop playsinline preload="auto">
+  <source src="background.mp4" type="video/mp4">
 </video>
+<div class="bg-video-overlay"></div>
 
-<div class="overlay"></div>
-
-<!-- INTRO -->
-
-<section id="intro" class="intro">
-
-<div class="intro-content">
-
-<div class="moon-container">
-
-<img src="2009.png" class="intro-moon" alt="Moon">
-
-<div class="moon-glow"></div>
-
+<!-- Ambient starfield (drawn purely in CSS, layered above intro's plain dark bg) -->
+<div class="starfield" aria-hidden="true">
+  <div class="stars stars-small"></div>
+  <div class="stars stars-medium"></div>
+  <div class="stars stars-large"></div>
 </div>
 
-<p class="intro-tag">
-A CINEMATIC BIRTHDAY EXPERIENCE
-</p>
-
-<h1 class="main-title">
-Moon Journey
-</h1>
-
-<p class="for-text">
-for
-</p>
-
-<h2 class="name">
-Dr Kat
-</h2>
-
-<div class="divider"></div>
-
-<p class="intro-quote">
-"Every life is written<br>
-one chapter at a time."
-</p>
-
-<button id="beginButton" class="begin-button">
-
-Begin the Journey →
-
-</button>
-
-</div>
-
-</section>
-<!-- =========================
-JOURNEY
-========================= -->
-
-<section
-id="journey"
-class="journey">
-
-<div
-id="slider"
-class="slider">
-
-<!-- JavaScript Creates Slides -->
-
-</div>
-
-<!-- =========================
-BOTTOM NAVIGATION
-========================= -->
-
-<div class="navigation">
-
-<button
-id="previousButton"
-class="nav-button">
-
-&#10094;
-
-</button>
-
-<div
-id="progress"
-class="progress">
-
-01 / 18
-
-</div>
-
-<button
-id="nextButton"
-class="nav-button">
-
-&#10095;
-
-</button>
-
-</div>
-
-</section>
-
-<!-- =========================
-BACKGROUND MUSIC
-========================= -->
-
-<audio
-id="backgroundMusic"
-loop>
-
-<source
-src="birthday-music.mp3"
-type="audio/mpeg">
-
+<!-- ============================================= -->
+<!-- AUDIO -->
+<!-- ============================================= -->
+<audio id="bg-audio" loop preload="auto">
+  <source src="birthday-music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- =========================
-MUSIC BUTTON
-========================= -->
-
-<button
-id="musicButton"
-class="music-button">
-
-♫
-
+<!-- Floating music toggle -->
+<button id="music-toggle" class="music-toggle hidden" aria-label="Toggle music">
+  <span class="music-icon">♫</span>
 </button>
 
-<!-- =========================
-FINAL BLESSING
-========================= -->
+<!-- ============================================= -->
+<!-- INTRO SCREEN -->
+<!-- ============================================= -->
+<section id="intro-screen" class="intro-screen hidden">
+  <div class="intro-content">
+    <div class="intro-moon">
+      <div class="intro-moon-glow"></div>
+      <div class="intro-moon-body"></div>
+    </div>
 
-<section
-id="finalSection"
-class="final-section">
+    <p class="eyebrow">a journey through the years</p>
+    <h1 class="intro-title">Moon Journey</h1>
+    <p class="intro-subtitle-for">for</p>
+    <p class="intro-name">Dr Kat</p>
 
-<div class="final-content">
+    <p class="intro-quote">
+      "The moon does not fight. It attacks no one. It does not worry.
+      It brightens other things and in doing so, it is fulfilled."
+    </p>
 
-<h2 id="blessingTitle"></h2>
-
-<p id="blessingVerse"></p>
-
-<p id="blessingReference"></p>
-
-<button
-id="lastMessageButton"
-class="replay-button">
-
-❤️ One Last Message
-
-</button>
-
-</div>
-
+    <button id="begin-btn" class="begin-btn">
+      <span>Begin the Journey</span>
+      <span class="arrow">→</span>
+    </button>
+  </div>
 </section>
 
-<!-- =========================
-LETTER
-========================= -->
+<!-- ============================================= -->
+<!-- JOURNEY (slides injected by script.js) -->
+<!-- ============================================= -->
+<section id="journey" class="journey hidden">
+  <div id="slides-track" class="slides-track"></div>
 
-<section
-id="letterSection"
-class="letter-section">
+  <!-- Bottom floating navigation -->
+  <div class="journey-nav">
+    <button id="nav-prev" class="nav-btn nav-prev" aria-label="Previous">‹</button>
+    <div class="nav-progress">
+      <span id="progress-current">01</span>
+      <span class="progress-divider">/</span>
+      <span id="progress-total">18</span>
+    </div>
+    <button id="nav-next" class="nav-btn nav-next" aria-label="Next">›</button>
+  </div>
+</section>
 
-<div class="letter-card">
+<!-- ============================================= -->
+<!-- FINAL BLESSING -->
+<!-- ============================================= -->
+<section id="blessing-screen" class="blessing-screen hidden">
+  <div class="glass-card blessing-card">
+    <p class="eyebrow">a moment of stillness</p>
+    <h2 class="blessing-title">A Blessing For Your Journey</h2>
 
-<h2>
+    <div class="verse-block">
+      <p class="verse-text">
+        "May He grant you your heart's desire and fulfill all your plans."
+      </p>
+      <p class="verse-ref">Psalm 20:4</p>
+    </div>
 
-One Last Thing...
+    <button id="last-message-btn" class="last-message-btn">
+      <span class="heart">❤️</span>
+      <span>One Last Message</span>
+    </button>
+  </div>
+</section>
 
-</h2>
+<!-- ============================================= -->
+<!-- LAST MESSAGE (letter) -->
+<!-- ============================================= -->
+<section id="letter-screen" class="letter-screen hidden">
+  <div class="glass-card letter-card">
+    <p class="letter-heading">My Dearest Kat,</p>
 
-<p
-id="letterText">
+    <div class="letter-body">
+      <p>Seventeen years live inside these pages — and still, somehow, they hold only a fraction of who you are.</p>
+      <p>Every year on this list was a year the world was a little brighter because you were in it. Not because you tried to shine, but because you simply did — quietly, faithfully, the way the moon does, night after night, asking nothing in return.</p>
+      <p>I believe you were formed with a purpose, Kat. Not by accident, not by chance — but on purpose, by a Father who counts your days and calls you His own. "Before I formed you in the womb I knew you." He has walked with you through every one of these years, even the ones that felt dark, even the ones the pictures can't show. Especially those.</p>
+      <p>So today, I don't just wish you a happy birthday. I bless you. I bless the year ahead of you — may it be soft where you need softness, strong where you need strength, and full of the quiet, steady light you've always given everyone else.</p>
+      <p>Thank you for being you. Thank you for letting me walk a little of this journey beside you.</p>
+      <p class="letter-signoff">With all my love, always looking up at the same moon —</p>
+    </div>
 
-</p>
-
-<button
-id="replayButton"
-class="replay-button">
-
-↺ Replay Journey
-
-</button>
-
-</div>
-
+    <button id="replay-btn" class="replay-btn">↻ Replay Journey</button>
+  </div>
 </section>
 
 <script src="script.js"></script>
-
 </body>
-
-</html>
+  </html>
+  
