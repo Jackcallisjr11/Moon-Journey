@@ -444,7 +444,7 @@ nextButton.addEventListener("click",()=>{
 
         if(currentSlide===TOTAL_SLIDES-1){
 
-            setTimeout(showFinalBlessing,1500);
+            setTimeout(showFinalBlessing,7000);
 
         }
 
