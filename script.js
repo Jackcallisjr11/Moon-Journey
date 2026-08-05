@@ -560,19 +560,19 @@ function createJourney(){
         `;
 
         slider.appendChild(slide);
-        ${item.year === "2026" ? `
-<div id="crossButton"
-style="
-margin-top:40px;
-font-size:50px;
-text-align:center;
-cursor:pointer;
-user-select:none;
-animation:pulse 1.5s infinite;
-">
-✝️
-</div>
-` : ""}
+        if (item.year === 2026) {
+
+    const cross = document.createElement("div");
+
+    cross.id = "crossButton";
+
+    cross.innerHTML = "✝️";
+
+    slider.lastElementChild
+        .querySelector(".slide-content")
+        .appendChild(cross);
+
+                   }
 
     });
 
