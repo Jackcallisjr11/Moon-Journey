@@ -1,42 +1,27 @@
 "use strict";
 
-/* ==========================================
-   MOON JOURNEY v4
-========================================== */
-
 /* =========================
 DOM
 ========================= */
 
-const intro =
-document.getElementById("intro");
+const intro = document.getElementById("intro");
+const journey = document.getElementById("journey");
+const slider = document.getElementById("slider");
 
-const journey =
-document.getElementById("journey");
+const beginButton = document.getElementById("beginButton");
+const previousButton = document.getElementById("previousButton");
+const nextButton = document.getElementById("nextButton");
 
-const slider =
-document.getElementById("slider");
+const progress = document.getElementById("progress");
 
-const beginButton =
-document.getElementById("beginButton");
-
-const previousButton =
-document.getElementById("previousButton");
-
-const nextButton =
-document.getElementById("nextButton");
-
-const progress =
-document.getElementById("progress");
-
-const musicButton =
-document.getElementById("musicButton");
+const backgroundVideo =
+document.getElementById("backgroundVideo");
 
 const backgroundMusic =
 document.getElementById("backgroundMusic");
 
-const backgroundVideo =
-document.getElementById("backgroundVideo");
+const musicButton =
+document.getElementById("musicButton");
 
 const loadingScreen =
 document.getElementById("loadingScreen");
@@ -74,8 +59,6 @@ let currentSlide = 0;
 
 let musicPlaying = false;
 
-let totalSlides = 18;
-
 
 /* =========================
 HELPERS
@@ -90,34 +73,16 @@ function pad(number){
 function updateProgress(){
 
     progress.textContent =
-    `${pad(currentSlide+1)} / ${pad(totalSlides)}`;
+    `${pad(currentSlide+1)} / 18`;
 
 }
 
 
 /* =========================
-VIDEO
+LOADING
 ========================= */
 
-window.addEventListener("load",async()=>{
-
-    try{
-
-        backgroundVideo.muted=true;
-
-        backgroundVideo.loop=true;
-
-        backgroundVideo.playsInline=true;
-
-        await backgroundVideo.play();
-
-    }
-
-    catch(error){
-
-        console.log(error);
-
-    }
+window.addEventListener("load",()=>{
 
     setTimeout(()=>{
 
@@ -129,15 +94,15 @@ window.addEventListener("load",async()=>{
 
             loadingScreen.style.display="none";
 
-        },800);
+        },700);
 
-    },1500);
+    },1800);
 
 });
 
 
 /* =========================
-FINAL BLESSING
+FINAL BLESSING DATA
 ========================= */
 
 const finalBlessing={
@@ -153,329 +118,186 @@ reference:"Psalm 20:4"
 JOURNEY DATA
 ========================= */
 
-const journeyData=[
+const journeyData = [
 
 {
-
 year:2009,
-
 date:"03 August",
-
 image:"2009.png",
-
 phase:"Full Moon",
-
 illumination:"100%",
-
 title:"The Beginning",
-
 wish:"Every beautiful story begins with a single moment. On this day, God gifted the world with a precious life."
-
 },
 
 {
-
 year:2010,
-
 date:"03 August",
-
 image:"2010.png",
-
 phase:"Waning Gibbous",
-
 illumination:"95%",
-
 title:"A Little Light",
-
 wish:"Another year, another beautiful chapter. May every small moment become a treasured memory."
-
 },
 
 {
-
 year:2011,
-
 date:"03 August",
-
 image:"2011.png",
-
 phase:"Last Quarter",
-
 illumination:"50%",
-
 title:"Growing Every Day",
-
 wish:"With every passing year, your story became richer with love, learning, and hope."
-
 },
 
 {
-
 year:2012,
-
 date:"03 August",
-
 image:"2012.png",
-
 phase:"Waxing Crescent",
-
 illumination:"24%",
-
 title:"Grace",
-
 wish:"May every step you take continue to be guided by grace, wisdom, and quiet strength."
-
 },
 
 {
-
 year:2013,
-
 date:"03 August",
-
 image:"2013.png",
-
 phase:"New Moon",
-
 illumination:"2%",
-
 title:"Hope",
-
 wish:"Even when the sky is darkest, hope patiently waits to shine again."
-
 },
 
 {
-
 year:2014,
-
 date:"03 August",
-
 image:"2014.png",
-
 phase:"Waxing Crescent",
-
 illumination:"44%",
-
 title:"Wonder",
-
 wish:"May you always keep a heart that is kind, a mind that continues to learn, and a spirit that never stops believing."
-
 },
 
 {
-
 year:2015,
-
 date:"03 August",
-
 image:"2015.png",
-
 phase:"Waning Gibbous",
-
 illumination:"88%",
-
 title:"Small Moments",
-
 wish:"Some of life's greatest blessings arrive quietly. May you always recognize them and treasure them."
-
 },
 
 {
-
 year:2016,
-
 date:"03 August",
-
 image:"2016.png",
-
 phase:"New Moon",
-
 illumination:"1%",
-
 title:"New Beginnings",
-
 wish:"Every ending gently prepares us for a new beginning. May every season lead you closer to God's purpose."
-
 },
-{
 
+{
 year:2017,
-
 date:"03 August",
-
 image:"2017.png",
-
 phase:"Waxing Gibbous",
-
 illumination:"82%",
-
 title:"Quiet Strength",
-
 wish:"True strength is often found in patience, faith, and the courage to keep moving forward."
-
 },
 
 {
-
 year:2018,
-
 date:"03 August",
-
 image:"2018.png",
-
 phase:"Waning Gibbous",
-
 illumination:"91%",
-
 title:"A Beautiful Story",
-
 wish:"Every year has added another meaningful page to your story. May the chapters ahead be filled with peace and joy."
-
 },
-
+];
 {
-
 year:2019,
-
 date:"03 August",
-
 image:"2019.png",
-
 phase:"Waxing Crescent",
-
 illumination:"5%",
-
 title:"Becoming",
-
 wish:"Growth is often so quiet that we hardly notice it. Yet every season has shaped you into someone wiser, kinder, and stronger."
-
 },
 
 {
-
 year:2020,
-
 date:"03 August",
-
 image:"2020.png",
-
 phase:"Full Moon",
-
 illumination:"100%",
-
 title:"Light Through Every Season",
-
 wish:"Even during uncertain moments, hope continues to shine. May your heart always find peace, even in the darkest nights."
-
 },
 
 {
-
 year:2021,
-
 date:"03 August",
-
 image:"2021.png",
-
 phase:"Waning Crescent",
-
 illumination:"32%",
-
 title:"Faith Over Fear",
-
 wish:"May every challenge become a lesson, every unanswered prayer become hope, and every tomorrow remind you that God walks beside you."
-
 },
 
 {
-
 year:2022,
-
 date:"03 August",
-
 image:"2022.png",
-
 phase:"Waxing Crescent",
-
 illumination:"30%",
-
 title:"Walking Forward",
-
 wish:"The future is filled with endless possibilities. Walk into it with faith, courage, and a heart that never stops believing."
-
 },
 
 {
-
 year:2023,
-
 date:"03 August",
-
 image:"2023.png",
-
 phase:"Waning Gibbous",
-
 illumination:"95%",
-
 title:"A Gentle Presence",
-
 wish:"May your kindness continue to brighten every life you touch, just as the moon gently brightens the night sky."
-
 },
 
 {
-
 year:2024,
-
 date:"03 August",
-
 image:"2024.png",
-
 phase:"Waning Crescent",
-
 illumination:"14%",
-
 title:"A New Horizon",
-
 wish:"May every new day bring fresh hope, quiet joy, and the courage to become the person God created you to be."
-
 },
 
 {
-
 year:2025,
-
 date:"03 August",
-
 image:"2025.png",
-
 phase:"Waxing Gibbous",
-
 illumination:"82%",
-
 title:"Grace In Every Step",
-
 wish:"You have already come so far. May your journey ahead be guided by wisdom, surrounded by love, and strengthened by God's grace."
-
 },
 
 {
-
 year:2026,
-
 date:"03 August",
-
 image:"2026.png",
-
 phase:"Waning Gibbous",
-
 illumination:"75%",
-
 title:"Seventeen Years Under This Sky",
-
 wish:"Seventeen years have become a beautiful story of faith, hope, growth, and countless memories. As another chapter begins, may your heart remain peaceful, your dreams stay alive, and may God continue to guide every step of your journey."
-
 }
 
 ];
@@ -487,96 +309,98 @@ CREATE JOURNEY
 
 function createJourney(){
 
-    slider.innerHTML="";
+slider.innerHTML="";
 
-    journeyData.forEach((item)=>{
+journeyData.forEach((item)=>{
 
-        const slide=document.createElement("section");
+const slide=document.createElement("section");
 
-        slide.className="slide fade-in";
+slide.className="slide";
 
-        slide.innerHTML=`
+slide.innerHTML=`
 
-        <div class="slide-content">
+<div class="slide-content">
 
-            <p class="chapter">
+<p class="chapter">
 
-                CHAPTER
+CHAPTER
 
-            </p>
+</p>
 
-            <p class="date">
+<p class="date">
 
-                ${item.date}
+${item.date}
 
-            </p>
+</p>
 
-            <h1 class="year">
+<h1 class="year">
 
-                ${item.year}
+${item.year}
 
-            </h1>
+</h1>
 
-            <img
+<img
+src="${item.image}"
+class="moon-image">
 
-            src="${item.image}"
+<p class="phase">
 
-            class="moon-image"
+${item.phase}
 
-            alt="${item.year}">
+</p>
 
-            <p class="phase">
+<p class="illumination">
 
-                ${item.phase}
+${item.illumination} illuminated
 
-            </p>
+</p>
 
-            <p class="illumination">
+<h2 class="slide-title">
 
-                ${item.illumination} illuminated
+${item.title}
 
-            </p>
+</h2>
 
-            <h2 class="slide-title">
+<p class="wish">
 
-                ${item.title}
+${item.wish}
 
-            </h2>
+</p>
 
-            <p class="wish">
+${
+item.year===2026?
 
-                ${item.wish}
+`<div id="crossButton"
+style="
+margin-top:35px;
+font-size:52px;
+cursor:pointer;
+animation:pulse 1.5s infinite;
+">
 
-            </p>
+✝️
 
-            <p class="swipe">
+</div>`
 
-                Swipe • Tap Next →
+:
 
-            </p>
+`<p class="swipe">
 
-        </div>
+Swipe • Tap Next →
 
-        `;
+</p>`
 
-        slider.appendChild(slide);
-        if (item.year === 2026) {
+}
 
-    const cross = document.createElement("div");
+</div>
 
-    cross.id = "crossButton";
+`;
 
-    cross.innerHTML = "✝️";
+slider.appendChild(slide);
 
-    slider.lastElementChild
-        .querySelector(".slide-content")
-        .appendChild(cross);
+});
 
-                   }
-
-    });
-
-    updateProgress();
+updateProgress();
 
 }
 
@@ -587,54 +411,46 @@ BEGIN JOURNEY
 
 beginButton.addEventListener("click",()=>{
 
-    intro.style.display="none";
+intro.style.display="none";
 
-    journey.classList.add("active");
+journey.classList.add("active");
 
-    journey.style.display="block";
+backgroundVideo.style.display="block";
 
-    currentSlide=0;
+backgroundVideo.play().catch(()=>{});
 
-    createJourney();
+backgroundMusic.play().catch(()=>{});
 
-    slider.scrollTo({
+musicPlaying=true;
 
-        left:0,
+musicButton.textContent="❚❚";
 
-        behavior:"auto"
+currentSlide=0;
 
-    });
+createJourney();
 
-    updateProgress();
-
-    backgroundMusic.play().catch(()=>{});
-
-    musicPlaying=true;
-
-    musicButton.textContent="❚❚";
+updateProgress();
 
 });
-
-
 /* =========================
 PREVIOUS
 ========================= */
 
 previousButton.addEventListener("click",()=>{
 
-    if(currentSlide===0) return;
+if(currentSlide===0)return;
 
-    currentSlide--;
+currentSlide--;
 
-    slider.scrollTo({
+slider.scrollTo({
 
-        left:slider.clientWidth*currentSlide,
+left:slider.clientWidth*currentSlide,
 
-        behavior:"smooth"
+behavior:"smooth"
 
-    });
+});
 
-    updateProgress();
+updateProgress();
 
 });
 
@@ -645,111 +461,106 @@ NEXT
 
 nextButton.addEventListener("click",()=>{
 
-    if(currentSlide<TOTAL_SLIDES-1){
+if(currentSlide>=TOTAL_SLIDES-1)return;
 
-        currentSlide++;
+currentSlide++;
 
-        slider.scrollTo({
+slider.scrollTo({
 
-            left:slider.clientWidth*currentSlide,
+left:slider.clientWidth*currentSlide,
 
-            behavior:"smooth"
+behavior:"smooth"
 
-        });
+});
 
-        updateProgress();
-
-    }
+updateProgress();
 
 });
 
 
 /* =========================
-LAST MOON HOLD
+SLIDER
 ========================= */
 
 slider.addEventListener("scroll",()=>{
 
-    const index=Math.round(
+const index=Math.round(
 
-        slider.scrollLeft/
+slider.scrollLeft/
 
-        slider.clientWidth
+slider.clientWidth
 
-    );
+);
 
-    currentSlide=index;
+if(index!==currentSlide){
 
-    updateProgress();
+currentSlide=index;
+
+updateProgress();
+
+}
 
 });
 
 
 /* =========================
-LAST SLIDE CROSS
+CROSS BUTTON
 ========================= */
 
 document.addEventListener("click",(e)=>{
 
-    if(e.target.id==="crossButton"){
+if(e.target.id==="crossButton"){
 
-        showFinalBlessing();
+journey.style.display="none";
 
-    }
+finalSection.style.display="flex";
 
-});
-/* =========================
-FINAL BLESSING
-========================= */
+blessingTitle.textContent=
 
-function showFinalBlessing(){
+finalBlessing.title;
 
-    journey.style.display="none";
+blessingVerse.textContent=
 
-    finalSection.style.display="flex";
+`"${finalBlessing.verse}"`;
 
-    blessingTitle.textContent=
-    finalBlessing.title;
+blessingReference.textContent=
 
-    blessingVerse.textContent=
-    `"${finalBlessing.verse}"`;
-
-    blessingReference.textContent=
-    finalBlessing.reference;
+finalBlessing.reference;
 
 }
 
+});
+
 
 /* =========================
-ONE LAST BLESSING
+LAST MESSAGE
 ========================= */
 
 lastMessageButton.addEventListener("click",()=>{
 
-    finalSection.style.display="none";
+finalSection.style.display="none";
 
-    letterSection.style.display="flex";
+letterSection.style.display="flex";
 
-    letterText.textContent=
+letterText.textContent=
 
 `Happy Birthday.
 
-As you look back at every moon that has watched over your journey,
-remember that every season has shaped you into who you are today.
+Every moon has silently watched
+your beautiful journey.
 
-May God continue to guide your path,
-strengthen your heart,
-and fill your future with peace,
-wisdom,
+May God bless you,
+protect you,
+guide every step you take,
+and fill your life with
+peace,
 joy,
-and endless hope.
-
-May every dream He has placed within you
-bloom in His perfect time.
+hope
+and endless love.
 
 Happy 17th Birthday.
 
-God bless you always.
+God Bless You Always.
 
 ✝️🤍`;
 
@@ -762,23 +573,27 @@ REPLAY
 
 replayButton.addEventListener("click",()=>{
 
-    letterSection.style.display="none";
+letterSection.style.display="none";
 
-    intro.style.display="flex";
+journey.style.display="none";
 
-    journey.style.display="none";
+intro.style.display="flex";
 
-    currentSlide=0;
+backgroundVideo.pause();
 
-    updateProgress();
+backgroundVideo.currentTime=0;
 
-    slider.scrollTo({
+backgroundVideo.style.display="none";
 
-        left:0,
+backgroundMusic.pause();
 
-        behavior:"auto"
+musicPlaying=false;
 
-    });
+musicButton.textContent="♫";
+
+currentSlide=0;
+
+updateProgress();
 
 });
 
@@ -789,48 +604,21 @@ MUSIC BUTTON
 
 musicButton.addEventListener("click",()=>{
 
-    if(musicPlaying){
+if(musicPlaying){
 
-        backgroundMusic.pause();
+backgroundMusic.pause();
 
-        musicButton.textContent="♫";
+musicButton.textContent="♫";
 
-    }
+}else{
 
-    else{
+backgroundMusic.play().catch(()=>{});
 
-        backgroundMusic.play().catch(()=>{});
+musicButton.textContent="❚❚";
 
-        musicButton.textContent="❚❚";
+}
 
-    }
-
-    musicPlaying=!musicPlaying;
-
-});
-
-
-/* =========================
-SLIDER
-========================= */
-
-slider.addEventListener("scroll",()=>{
-
-    const index=Math.round(
-
-        slider.scrollLeft/
-
-        slider.clientWidth
-
-    );
-
-    if(index!==currentSlide){
-
-        currentSlide=index;
-
-        updateProgress();
-
-    }
+musicPlaying=!musicPlaying;
 
 });
 
@@ -839,135 +627,17 @@ slider.addEventListener("scroll",()=>{
 INITIALIZE
 ========================= */
 
-updateProgress();
-
-journey.classList.remove("active");
-
 journey.style.display="none";
 
 finalSection.style.display="none";
 
 letterSection.style.display="none";
 
+backgroundVideo.style.display="none";
+
 musicButton.textContent="♫";
 
+updateProgress();
 
-/* =========================
-PRELOAD IMAGES
-========================= */
-
-journeyData.forEach(item=>{
-
-    const img=new Image();
-
-    img.src=item.image;
-
-});
-
-
-console.log("🌙 Moon Journey v4 Ready");
-/* =========================
-BACKGROUND VIDEO
-========================= */
-
-window.addEventListener("load", async()=>{
-
-    try{
-
-        backgroundVideo.muted=true;
-
-        backgroundVideo.loop=true;
-
-        backgroundVideo.playsInline=true;
-
-        backgroundVideo.setAttribute("autoplay","");
-
-        backgroundVideo.setAttribute("muted","");
-
-        await backgroundVideo.play();
-
-    }
-
-    catch(error){
-
-        console.log("Video autoplay blocked");
-
-    }
-
-    setTimeout(()=>{
-
-        loadingScreen.style.opacity="0";
-
-        loadingScreen.style.pointerEvents="none";
-
-        setTimeout(()=>{
-
-            loadingScreen.style.display="none";
-
-        },800);
-
-    },1800);
-
-});
-
-
-/* =========================
-FADE TRANSITION
-========================= */
-
-function fadeScreen(element){
-
-    element.classList.remove("fade-in");
-
-    void element.offsetWidth;
-
-    element.classList.add("fade-in");
-
-}
-
-
-/* =========================
-BEGIN JOURNEY EFFECT
-========================= */
-
-beginButton.addEventListener("click",()=>{
-
-    fadeScreen(journey);
-
-});
-
-
-/* =========================
-FINAL CLEANUP
-========================= */
-
-document.addEventListener("visibilitychange",()=>{
-
-    if(document.hidden){
-
-        backgroundMusic.pause();
-
-    }
-
-    else{
-
-        if(musicPlaying){
-
-            backgroundMusic.play().catch(()=>{});
-
-        }
-
-    }
-
-});
-
-
-/* =========================
-END
-========================= */
-
-console.log("🌙 Moon Journey v4 Loaded Successfully");
-
-console.log("✨ Cinematic Edition");
-
-console.log("🙏 God Bless");
+console.log("🌙 Moon Journey v5 Loaded Successfully");
+   
