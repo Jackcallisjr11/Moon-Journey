@@ -560,6 +560,19 @@ function createJourney(){
         `;
 
         slider.appendChild(slide);
+        ${item.year === "2026" ? `
+<div id="crossButton"
+style="
+margin-top:40px;
+font-size:50px;
+text-align:center;
+cursor:pointer;
+user-select:none;
+animation:pulse 1.5s infinite;
+">
+✝️
+</div>
+` : ""}
 
     });
 
@@ -646,25 +659,41 @@ nextButton.addEventListener("click",()=>{
 
         updateProgress();
 
-        /* Last Moon Hold */
+    }
 
-        if(currentSlide===TOTAL_SLIDES-1){
+});
 
-            nextButton.disabled=true;
 
-            previousButton.disabled=true;
+/* =========================
+LAST MOON HOLD
+========================= */
 
-            setTimeout(()=>{
+slider.addEventListener("scroll",()=>{
 
-                showFinalBlessing();
+    const index=Math.round(
 
-                nextButton.disabled=false;
+        slider.scrollLeft/
 
-                previousButton.disabled=false;
+        slider.clientWidth
 
-            },8000);
+    );
 
-        }
+    currentSlide=index;
+
+    updateProgress();
+
+});
+
+
+/* =========================
+LAST SLIDE CROSS
+========================= */
+
+document.addEventListener("click",(e)=>{
+
+    if(e.target.id==="crossButton"){
+
+        showFinalBlessing();
 
     }
 
