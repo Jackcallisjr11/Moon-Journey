@@ -1,0 +1,863 @@
+/* ==========================================
+   MOON JOURNEY v2
+   CINEMATIC BIRTHDAY EXPERIENCE
+========================================== */
+
+
+/* =========================
+RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    background:#050914;
+
+    color:#ffffff;
+
+    font-family:"Inter",sans-serif;
+
+}
+
+
+/* =========================
+BACKGROUND VIDEO
+========================= */
+
+.background-video{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    filter:
+    brightness(.35);
+
+    z-index:-3;
+
+}
+
+
+/* =========================
+OVERLAY
+========================= */
+
+.overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+
+    rgba(0,0,0,.25),
+
+    rgba(0,0,0,.70)
+
+    );
+
+    z-index:-2;
+
+}
+/* =========================
+INTRO
+========================= */
+
+.intro{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:30px;
+
+}
+
+.intro-content{
+
+    max-width:420px;
+
+}
+
+.intro-moon{
+
+    width:180px;
+
+    display:block;
+
+    margin:auto;
+
+    animation:
+
+    moonFloat 5s ease-in-out infinite;
+
+}
+
+.moon-glow{
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:50%;
+
+    background:
+
+    rgba(246,231,176,.12);
+
+    filter:blur(45px);
+
+    z-index:-1;
+
+}
+
+.moon-container{
+
+    position:relative;
+
+    width:180px;
+
+    margin:auto auto 35px;
+
+}
+/* =========================
+INTRO TEXT
+========================= */
+
+.intro-tag{
+
+    font-size:11px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    color:rgba(255,255,255,.70);
+
+    margin-bottom:18px;
+
+}
+
+.main-title{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:62px;
+
+    font-weight:600;
+
+    color:#ffffff;
+
+    line-height:1;
+
+}
+
+.for-text{
+
+    margin-top:10px;
+
+    font-size:15px;
+
+    letter-spacing:3px;
+
+    color:rgba(255,255,255,.65);
+
+}
+
+.name{
+
+    margin-top:8px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:42px;
+
+    font-weight:600;
+
+    color:#F6E7B0;
+
+}
+
+.divider{
+
+    width:70px;
+
+    height:1px;
+
+    margin:25px auto;
+
+    background:rgba(246,231,176,.65);
+
+}
+
+.intro-quote{
+
+    font-size:17px;
+
+    line-height:1.8;
+
+    color:rgba(255,255,255,.88);
+
+    font-style:italic;
+
+}
+/* =========================
+BEGIN BUTTON
+========================= */
+
+.begin-button{
+
+    margin-top:40px;
+
+    padding:16px 36px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:rgba(246,231,176,.12);
+
+    border:1px solid rgba(246,231,176,.40);
+
+    color:#ffffff;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(12px);
+
+    transition:.3s;
+
+}
+
+.begin-button:hover{
+
+    transform:translateY(-3px);
+
+    background:rgba(246,231,176,.18);
+
+    box-shadow:
+
+    0 0 25px rgba(246,231,176,.18);
+
+}
+
+
+/* =========================
+ANIMATION
+========================= */
+
+@keyframes moonFloat{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+/* =========================
+JOURNEY
+========================= */
+
+.journey{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    overflow:hidden;
+
+}
+
+.journey.active{
+
+    display:block;
+
+}
+
+.slider{
+
+    width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    overflow-x:auto;
+
+    overflow-y:hidden;
+
+    scroll-snap-type:x mandatory;
+
+    scroll-behavior:smooth;
+
+    scrollbar-width:none;
+
+}
+
+.slider::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+.slide{
+
+    min-width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    scroll-snap-align:start;
+
+    padding:35px;
+
+}
+
+.slide-content{
+
+    width:100%;
+
+    max-width:500px;
+
+    text-align:center;
+
+}
+/* =========================
+YEAR SECTION
+========================= */
+
+.chapter{
+
+    font-size:11px;
+
+    letter-spacing:4px;
+
+    color:rgba(255,255,255,.65);
+
+    text-transform:uppercase;
+
+}
+
+.date{
+
+    margin-top:10px;
+
+    color:#F6E7B0;
+
+    letter-spacing:2px;
+
+}
+
+.year{
+
+    margin-top:10px;
+
+    font-size:68px;
+
+    font-family:"Cormorant Garamond",serif;
+
+}
+
+.moon-image{
+
+    width:220px;
+
+    margin:25px auto;
+
+    display:block;
+
+    animation:moonFloat 5s ease-in-out infinite;
+
+}
+
+.phase{
+
+    color:#F6E7B0;
+
+    letter-spacing:2px;
+
+}
+
+.illumination{
+
+    margin-top:8px;
+
+    color:rgba(255,255,255,.70);
+
+}
+/* =========================
+WISH SECTION
+========================= */
+
+.slide-title{
+
+    margin-top:28px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:34px;
+
+    color:#ffffff;
+
+}
+
+.wish{
+
+    margin-top:20px;
+
+    font-size:16px;
+
+    line-height:1.9;
+
+    color:rgba(255,255,255,.88);
+
+}
+
+.swipe{
+
+    margin-top:35px;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+    color:rgba(255,255,255,.45);
+
+}
+
+
+/* =========================
+BOTTOM NAVIGATION
+========================= */
+
+.navigation{
+
+    position:fixed;
+
+    bottom:25px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:min(92%,520px);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.nav-button{
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    color:#ffffff;
+
+    backdrop-filter:blur(12px);
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.nav-button:hover{
+
+    background:rgba(246,231,176,.15);
+
+}
+
+.progress{
+
+    padding:12px 20px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(12px);
+
+    letter-spacing:3px;
+
+    font-size:12px;
+
+}
+/* =========================
+MUSIC BUTTON
+========================= */
+
+.music-button{
+
+    position:fixed;
+
+    top:20px;
+
+    right:20px;
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    color:#ffffff;
+
+    backdrop-filter:blur(12px);
+
+    cursor:pointer;
+
+    z-index:999;
+
+}
+
+
+/* =========================
+LOADING SCREEN
+========================= */
+
+.loading-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#050914;
+
+    z-index:9999;
+
+}
+
+.loading-spinner{
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:50%;
+
+    border:3px solid rgba(255,255,255,.15);
+
+    border-top:3px solid #F6E7B0;
+
+    animation:spin 1s linear infinite;
+
+}
+
+.loading-content p{
+
+    margin-top:20px;
+
+    color:#ffffff;
+
+}
+
+@keyframes spin{
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+/* =========================
+FINAL BLESSING
+========================= */
+
+.final-section{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+    text-align:center;
+
+    background:rgba(5,9,20,.92);
+
+    backdrop-filter:blur(10px);
+
+    z-index:200;
+
+}
+
+.final-content{
+
+    width:100%;
+
+    max-width:600px;
+
+}
+
+#blessingTitle{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:44px;
+
+    color:#F6E7B0;
+
+    margin-bottom:25px;
+
+}
+
+#blessingVerse{
+
+    font-size:20px;
+
+    line-height:1.9;
+
+    color:#ffffff;
+
+    font-style:italic;
+
+}
+
+#blessingReference{
+
+    margin-top:20px;
+
+    color:#F6E7B0;
+
+    letter-spacing:3px;
+
+}
+
+
+/* =========================
+LETTER
+========================= */
+
+.letter-section{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:25px;
+
+    z-index:210;
+
+}
+
+.letter-card{
+
+    width:100%;
+
+    max-width:650px;
+
+    padding:35px;
+
+    border-radius:24px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(246,231,176,.18);
+
+    text-align:left;
+
+}
+
+.letter-card h2{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:38px;
+
+    color:#F6E7B0;
+
+    margin-bottom:25px;
+
+}
+
+#letterText{
+
+    white-space:pre-line;
+
+    line-height:2;
+
+    color:#ffffff;
+
+}
+/* =========================
+REPLAY BUTTON
+========================= */
+
+.replay-button{
+
+    margin-top:35px;
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:#F6E7B0;
+
+    color:#050914;
+
+    font-weight:600;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.replay-button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+
+    0 10px 30px
+
+    rgba(246,231,176,.25);
+
+}
+
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.main-title{
+
+font-size:52px;
+
+}
+
+.name{
+
+font-size:36px;
+
+}
+
+.year{
+
+font-size:58px;
+
+}
+
+.moon-image{
+
+width:180px;
+
+}
+
+.wish{
+
+font-size:15px;
+
+}
+
+#blessingTitle{
+
+font-size:34px;
+
+}
+
+#blessingVerse{
+
+font-size:17px;
+
+}
+
+.letter-card{
+
+padding:25px;
+
+}
+
+}

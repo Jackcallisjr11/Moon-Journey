@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta
+name="theme-color"
+content="#050914">
+
+<title>
+Moon Journey • Dr Kat
+</title>
+
+<link
+rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link
+rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="style.css">
+
+</head>
+
+<body>
+
+<!-- =========================
+BACKGROUND
+========================= -->
+
+<video
+id="backgroundVideo"
+class="background-video"
+autoplay
+muted
+loop
+playsinline
+preload="auto">
+
+<source
+
+src="assets/video/background.mp4"
+
+type="video/mp4">
+
+</video>
+
+<div class="overlay"></div>
+<!-- =========================
+INTRO
+========================= -->
+
+<section
+
+id="intro"
+
+class="intro">
+
+<div class="intro-content">
+
+<div class="moon-container">
+
+<img
+
+src="assets/moon/2009.png"
+
+alt="Moon"
+
+class="intro-moon">
+
+<div class="moon-glow"></div>
+
+</div>
+
+<p class="intro-tag">
+
+A Cinematic Birthday Experience
+
+</p>
+
+<h1 class="main-title">
+
+Moon Journey
+
+</h1>
+
+<p class="for-text">
+
+for
+
+</p>
+
+<h2 class="name">
+
+Dr Kat
+
+</h2>
+
+<div class="divider"></div>
+
+<p class="intro-quote">
+
+"Every life is written<br>
+one chapter at a time."
+
+</p>
+
+<button
+
+id="beginButton"
+
+class="begin-button">
+
+Begin the Journey →
+
+</button>
+
+</div>
+
+</section>
+<!-- =========================
+JOURNEY
+========================= -->
+
+<section
+
+id="journey"
+
+class="journey">
+
+<div
+
+id="slider"
+
+class="slider">
+
+<!-- JavaScript creates all slides here -->
+
+</div>
+
+<!-- =========================
+BOTTOM NAVIGATION
+========================= -->
+
+<div class="navigation">
+
+<button
+
+id="previousButton"
+
+class="nav-button"
+
+type="button"
+
+aria-label="Previous">
+
+&#10094;
+
+</button>
+
+<div
+
+id="progress"
+
+class="progress">
+
+01 / 18
+
+</div>
+
+<button
+
+id="nextButton"
+
+class="nav-button"
+
+type="button"
+
+aria-label="Next">
+
+&#10095;
+
+</button>
+
+</div>
+
+</section>
+<!-- =========================
+BACKGROUND MUSIC
+========================= -->
+
+<audio
+
+id="backgroundMusic"
+
+loop
+
+preload="auto">
+
+<source
+
+src="assets/music/birthday-music.mp3"
+
+type="audio/mpeg">
+
+</audio>
+
+
+<!-- =========================
+MUSIC BUTTON
+========================= -->
+
+<button
+
+id="musicButton"
+
+class="music-button"
+
+type="button"
+
+aria-label="Music">
+
+♫
+
+</button>
+
+
+<!-- =========================
+LOADING SCREEN
+========================= -->
+
+<div
+
+id="loadingScreen"
+
+class="loading-screen">
+
+<div class="loading-content">
+
+<div class="loading-spinner"></div>
+
+<p>
+
+Preparing your journey...
+
+</p>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+FINAL BLESSING
+========================= -->
+
+<section
+
+id="finalSection"
+
+class="final-section">
+
+<div class="final-content">
+
+<h2 id="blessingTitle"></h2>
+
+<p id="blessingVerse"></p>
+
+<p id="blessingReference"></p>
+
+<button
+id="lastMessageButton"
+class="replay-button">
+
+❤️ One Last Message
+
+</button>
+
+</div>
+
+</section>
+<!-- =========================
+FINAL LETTER
+========================= -->
+
+<section
+
+id="letterSection"
+
+class="letter-section">
+
+<div class="letter-card">
+
+<h2>
+
+One Last Thing...
+
+</h2>
+
+<p id="letterText">
+
+</p>
+
+<button
+
+id="replayButton"
+
+class="replay-button"
+
+type="button">
+
+Replay the Journey ↺
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+SCRIPT
+========================= -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
