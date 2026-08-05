@@ -1,12 +1,6 @@
 /* ==========================================
-   MOON JOURNEY v2
-   CINEMATIC BIRTHDAY EXPERIENCE
+   MOON JOURNEY v4
 ========================================== */
-
-
-/* =========================
-RESET
-========================= */
 
 *{
     margin:0;
@@ -24,12 +18,11 @@ body{
 
     background:#050914;
 
-    color:#ffffff;
+    color:#fff;
 
     font-family:"Inter",sans-serif;
 
 }
-
 
 /* =========================
 BACKGROUND VIDEO
@@ -37,24 +30,23 @@ BACKGROUND VIDEO
 
 .background-video{
 
-    position: fixed;
+    position:fixed;
 
-    top: 0;
-    left: 0;
+    top:0;
+    left:0;
 
-    width: 100vw;
-    height: 100vh;
+    width:100vw;
+    height:100vh;
 
-    object-fit: cover;
+    object-fit:cover;
 
-    display: block;
+    display:block;
 
-    opacity: 1;
+    opacity:1;
 
-    z-index: -10;
+    z-index:-100;
 
 }
-
 
 /* =========================
 OVERLAY
@@ -62,15 +54,24 @@ OVERLAY
 
 .overlay{
 
-    position: fixed;
+    position:fixed;
 
-    inset: 0;
+    inset:0;
 
-    background: rgba(0,0,0,0.35);
+    background:
 
-    z-index: -9;
+    linear-gradient(
+
+    rgba(0,0,0,.25),
+
+    rgba(0,0,0,.70)
+
+    );
+
+    z-index:-99;
 
 }
+
 /* =========================
 INTRO
 ========================= */
@@ -95,7 +96,19 @@ INTRO
 
 .intro-content{
 
+    width:100%;
+
     max-width:420px;
+
+}
+
+.moon-container{
+
+    position:relative;
+
+    width:180px;
+
+    margin:auto auto 35px;
 
 }
 
@@ -107,9 +120,7 @@ INTRO
 
     margin:auto;
 
-    animation:
-
-    moonFloat 5s ease-in-out infinite;
+    animation:moonFloat 5s ease-in-out infinite;
 
 }
 
@@ -123,38 +134,11 @@ INTRO
 
     background:
 
-    rgba(246,231,176,.12);
+    rgba(246,231,176,.15);
 
     filter:blur(45px);
 
     z-index:-1;
-
-}
-
-.moon-container{
-
-    position:relative;
-
-    width:180px;
-
-    margin:auto auto 35px;
-
-}
-/* =========================
-INTRO TEXT
-========================= */
-
-.intro-tag{
-
-    font-size:11px;
-
-    letter-spacing:4px;
-
-    text-transform:uppercase;
-
-    color:rgba(255,255,255,.70);
-
-    margin-bottom:18px;
 
 }
 
@@ -164,129 +148,83 @@ INTRO TEXT
 
     font-size:62px;
 
-    font-weight:600;
-
-    color:#ffffff;
-
-    line-height:1;
-
-}
-
-.for-text{
-
-    margin-top:10px;
-
-    font-size:15px;
-
-    letter-spacing:3px;
-
-    color:rgba(255,255,255,.65);
-
 }
 
 .name{
-
-    margin-top:8px;
 
     font-family:"Cormorant Garamond",serif;
 
     font-size:42px;
 
-    font-weight:600;
-
     color:#F6E7B0;
+
+    margin-top:10px;
 
 }
 
-.divider{
+.intro-tag{
 
-    width:70px;
+    letter-spacing:4px;
 
-    height:1px;
+    font-size:11px;
 
-    margin:25px auto;
-
-    background:rgba(246,231,176,.65);
+    margin-bottom:18px;
 
 }
 
 .intro-quote{
 
-    font-size:17px;
+    margin-top:25px;
 
     line-height:1.8;
-
-    color:rgba(255,255,255,.88);
 
     font-style:italic;
 
 }
-/* =========================
-BEGIN BUTTON
-========================= */
 
 .begin-button{
 
-    margin-top:40px;
+    margin-top:35px;
 
-    padding:16px 36px;
+    padding:16px 34px;
 
     border:none;
 
     border-radius:50px;
 
-    background:rgba(246,231,176,.12);
+    background:
 
-    border:1px solid rgba(246,231,176,.40);
+    rgba(246,231,176,.12);
 
-    color:#ffffff;
+    border:1px solid
 
-    font-size:15px;
+    rgba(246,231,176,.35);
 
-    cursor:pointer;
+    color:#fff;
 
-    backdrop-filter:blur(12px);
-
-    transition:.3s;
+    backdrop-filter:blur(15px);
 
 }
-
-.begin-button:hover{
-
-    transform:translateY(-3px);
-
-    background:rgba(246,231,176,.18);
-
-    box-shadow:
-
-    0 0 25px rgba(246,231,176,.18);
-
-}
-
-
-/* =========================
-ANIMATION
-========================= */
 
 @keyframes moonFloat{
 
-    0%{
+0%{
 
-        transform:translateY(0px);
+transform:translateY(0);
 
-    }
+}
 
-    50%{
+50%{
 
-        transform:translateY(-10px);
+transform:translateY(-10px);
 
-    }
+}
 
-    100%{
+100%{
 
-        transform:translateY(0px);
+transform:translateY(0);
 
-    }
+}
 
 }
 /* =========================
@@ -359,14 +297,11 @@ JOURNEY
 
     width:100%;
 
-    max-width:500px;
+    max-width:520px;
 
     text-align:center;
 
 }
-/* =========================
-YEAR SECTION
-========================= */
 
 .chapter{
 
@@ -375,8 +310,6 @@ YEAR SECTION
     letter-spacing:4px;
 
     color:rgba(255,255,255,.65);
-
-    text-transform:uppercase;
 
 }
 
@@ -416,6 +349,8 @@ YEAR SECTION
 
     color:#F6E7B0;
 
+    margin-top:15px;
+
     letter-spacing:2px;
 
 }
@@ -427,27 +362,20 @@ YEAR SECTION
     color:rgba(255,255,255,.70);
 
 }
-/* =========================
-WISH SECTION
-========================= */
 
 .slide-title{
 
-    margin-top:28px;
+    margin-top:25px;
 
     font-family:"Cormorant Garamond",serif;
 
     font-size:34px;
 
-    color:#ffffff;
-
 }
 
 .wish{
 
-    margin-top:20px;
-
-    font-size:16px;
+    margin-top:18px;
 
     line-height:1.9;
 
@@ -459,14 +387,13 @@ WISH SECTION
 
     margin-top:35px;
 
-    font-size:11px;
-
     letter-spacing:3px;
+
+    font-size:11px;
 
     color:rgba(255,255,255,.45);
 
 }
-
 
 /* =========================
 BOTTOM NAVIGATION
@@ -494,9 +421,9 @@ BOTTOM NAVIGATION
 
 .nav-button{
 
-    width:48px;
+    width:50px;
 
-    height:48px;
+    height:50px;
 
     border:none;
 
@@ -504,25 +431,17 @@ BOTTOM NAVIGATION
 
     background:rgba(255,255,255,.08);
 
-    color:#ffffff;
+    color:#fff;
 
     backdrop-filter:blur(12px);
 
     cursor:pointer;
 
-    transition:.3s;
-
-}
-
-.nav-button:hover{
-
-    background:rgba(246,231,176,.15);
-
 }
 
 .progress{
 
-    padding:12px 20px;
+    padding:12px 22px;
 
     border-radius:30px;
 
@@ -547,9 +466,9 @@ MUSIC BUTTON
 
     right:20px;
 
-    width:48px;
+    width:52px;
 
-    height:48px;
+    height:52px;
 
     border:none;
 
@@ -559,11 +478,21 @@ MUSIC BUTTON
 
     color:#ffffff;
 
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(15px);
 
     cursor:pointer;
 
-    z-index:999;
+    transition:.3s;
+
+    z-index:100;
+
+}
+
+.music-button:hover{
+
+    transform:scale(1.08);
+
+    background:rgba(246,231,176,.18);
 
 }
 
@@ -588,13 +517,21 @@ LOADING SCREEN
 
     z-index:9999;
 
+    transition:opacity .8s;
+
+}
+
+.loading-content{
+
+    text-align:center;
+
 }
 
 .loading-spinner{
 
-    width:65px;
+    width:70px;
 
-    height:65px;
+    height:70px;
 
     border-radius:50%;
 
@@ -608,9 +545,9 @@ LOADING SCREEN
 
 .loading-content p{
 
-    margin-top:20px;
+    margin-top:25px;
 
-    color:#ffffff;
+    letter-spacing:2px;
 
 }
 
@@ -623,6 +560,8 @@ LOADING SCREEN
     }
 
 }
+
+
 /* =========================
 FINAL BLESSING
 ========================= */
@@ -639,15 +578,15 @@ FINAL BLESSING
 
     align-items:center;
 
-    padding:30px;
-
     text-align:center;
+
+    padding:30px;
 
     background:rgba(5,9,20,.92);
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:blur(15px);
 
-    z-index:200;
+    z-index:500;
 
 }
 
@@ -655,7 +594,7 @@ FINAL BLESSING
 
     width:100%;
 
-    max-width:600px;
+    max-width:650px;
 
 }
 
@@ -663,29 +602,25 @@ FINAL BLESSING
 
     font-family:"Cormorant Garamond",serif;
 
-    font-size:44px;
+    font-size:46px;
 
     color:#F6E7B0;
-
-    margin-bottom:25px;
 
 }
 
 #blessingVerse{
 
+    margin-top:25px;
+
     font-size:20px;
 
-    line-height:1.9;
-
-    color:#ffffff;
-
-    font-style:italic;
+    line-height:2;
 
 }
 
 #blessingReference{
 
-    margin-top:20px;
+    margin-top:25px;
 
     color:#F6E7B0;
 
@@ -712,7 +647,11 @@ LETTER
 
     padding:25px;
 
-    z-index:210;
+    background:rgba(5,9,20,.95);
+
+    backdrop-filter:blur(15px);
+
+    z-index:600;
 
 }
 
@@ -724,15 +663,13 @@ LETTER
 
     padding:35px;
 
-    border-radius:24px;
+    border-radius:25px;
 
     background:rgba(255,255,255,.08);
 
+    border:1px solid rgba(246,231,176,.25);
+
     backdrop-filter:blur(18px);
-
-    border:1px solid rgba(246,231,176,.18);
-
-    text-align:left;
 
 }
 
@@ -740,7 +677,7 @@ LETTER
 
     font-family:"Cormorant Garamond",serif;
 
-    font-size:38px;
+    font-size:40px;
 
     color:#F6E7B0;
 
@@ -757,8 +694,10 @@ LETTER
     color:#ffffff;
 
 }
+
+
 /* =========================
-REPLAY BUTTON
+BUTTONS
 ========================= */
 
 .replay-button{
@@ -777,9 +716,9 @@ REPLAY BUTTON
 
     color:#050914;
 
-    font-weight:600;
+    font-size:16px;
 
-    font-size:15px;
+    font-weight:600;
 
     cursor:pointer;
 
@@ -791,15 +730,9 @@ REPLAY BUTTON
 
     transform:translateY(-2px);
 
-    box-shadow:
-
-    0 10px 30px
-
-    rgba(246,231,176,.25);
+    box-shadow:0 10px 30px rgba(246,231,176,.30);
 
 }
-
-
 /* =========================
 MOBILE
 ========================= */
@@ -830,9 +763,17 @@ width:180px;
 
 }
 
+.slide-title{
+
+font-size:30px;
+
+}
+
 .wish{
 
 font-size:15px;
+
+line-height:1.9;
 
 }
 
@@ -846,6 +787,8 @@ font-size:34px;
 
 font-size:17px;
 
+line-height:1.9;
+
 }
 
 .letter-card{
@@ -854,4 +797,119 @@ padding:25px;
 
 }
 
+.navigation{
+
+width:94%;
+
 }
+
+.music-button{
+
+width:46px;
+
+height:46px;
+
+}
+
+}
+
+
+/* =========================
+FADE ANIMATIONS
+========================= */
+
+.fade-in{
+
+animation:fadeIn .8s ease forwards;
+
+}
+
+.fade-out{
+
+animation:fadeOut .8s ease forwards;
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(25px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes fadeOut{
+
+from{
+
+opacity:1;
+
+}
+
+to{
+
+opacity:0;
+
+}
+
+}
+
+
+/* =========================
+SMOOTH TRANSITIONS
+========================= */
+
+.slide-content,
+.intro-content,
+.final-content,
+.letter-card{
+
+animation:fadeIn 1s ease;
+
+}
+
+
+/* =========================
+GLASS EFFECT
+========================= */
+
+.navigation,
+.music-button,
+.begin-button{
+
+box-shadow:
+
+0 8px 30px rgba(0,0,0,.35);
+
+}
+
+
+/* =========================
+SELECTION
+========================= */
+
+::selection{
+
+background:#F6E7B0;
+
+color:#050914;
+
+}
+
+
+/* =========================
+END OF STYLE.CSS
+========================= */
+   
