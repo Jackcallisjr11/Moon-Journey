@@ -5,66 +5,79 @@
 
 <meta charset="UTF-8">
 
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
 
-<meta
-name="theme-color"
-content="#050914">
+<title>Moon Journey</title>
 
-<title>
-Moon Journey • Dr Kat
-</title>
+<link rel="stylesheet"
+href="Style.css">
 
-<link
-rel="preconnect"
+<link rel="preconnect"
 href="https://fonts.googleapis.com">
 
-<link
-rel="preconnect"
+<link rel="preconnect"
 href="https://fonts.gstatic.com"
 crossorigin>
 
-<link
-href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
 rel="stylesheet">
-
-<link
-rel="stylesheet"
-href="style.css">
 
 </head>
 
 <body>
 
 <!-- =========================
-BACKGROUND
+LOADING
+========================= -->
+
+<div
+id="loadingScreen"
+class="loading-screen">
+
+<div class="loading-content">
+
+<div class="loading-spinner"></div>
+
+<p>
+Preparing your journey...
+</p>
+
+</div>
+
+</div>
+
+<!-- =========================
+BACKGROUND VIDEO
 ========================= -->
 
 <video
-    id="backgroundVideo"
-    class="background-video"
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="auto"
-    poster="2009.png">
+id="backgroundVideo"
+class="background-video"
+autoplay
+muted
+loop
+playsinline
+preload="auto">
 
-    <source src="background.mp4?v=3" type="video/mp4">
+<source
+src="background.mp4"
+type="video/mp4">
 
 </video>
 
+<!-- =========================
+OVERLAY
+========================= -->
+
 <div class="overlay"></div>
+
 <!-- =========================
 INTRO
 ========================= -->
 
 <section
-
 id="intro"
-
 class="intro">
 
 <div class="intro-content">
@@ -72,11 +85,8 @@ class="intro">
 <div class="moon-container">
 
 <img
-
 src="2009.png"
-
 alt="Moon"
-
 class="intro-moon">
 
 <div class="moon-glow"></div>
@@ -84,27 +94,19 @@ class="intro-moon">
 </div>
 
 <p class="intro-tag">
-
-A Cinematic Birthday Experience
-
+A CINEMATIC BIRTHDAY EXPERIENCE
 </p>
 
 <h1 class="main-title">
-
 Moon Journey
-
 </h1>
 
 <p class="for-text">
-
 for
-
 </p>
 
 <h2 class="name">
-
 Dr Kat
-
 </h2>
 
 <div class="divider"></div>
@@ -112,14 +114,13 @@ Dr Kat
 <p class="intro-quote">
 
 "Every life is written<br>
+
 one chapter at a time."
 
 </p>
 
 <button
-
 id="beginButton"
-
 class="begin-button">
 
 Begin the Journey →
@@ -134,18 +135,14 @@ JOURNEY
 ========================= -->
 
 <section
-
 id="journey"
-
 class="journey">
 
 <div
-
 id="slider"
-
 class="slider">
 
-<!-- JavaScript creates all slides here -->
+<!-- Slides will be created by JavaScript -->
 
 </div>
 
@@ -156,23 +153,16 @@ BOTTOM NAVIGATION
 <div class="navigation">
 
 <button
-
 id="previousButton"
-
 class="nav-button"
-
-type="button"
-
-aria-label="Previous">
+type="button">
 
 &#10094;
 
 </button>
 
 <div
-
 id="progress"
-
 class="progress">
 
 01 / 18
@@ -180,14 +170,9 @@ class="progress">
 </div>
 
 <button
-
 id="nextButton"
-
 class="nav-button"
-
-type="button"
-
-aria-label="Next">
+type="button">
 
 &#10095;
 
@@ -196,79 +181,40 @@ aria-label="Next">
 </div>
 
 </section>
+
 <!-- =========================
 BACKGROUND MUSIC
 ========================= -->
 
 <audio
-
 id="backgroundMusic"
-
 loop
-
 preload="auto">
 
 <source
-
 src="birthday-music.mp3"
-
 type="audio/mpeg">
 
 </audio>
-
 
 <!-- =========================
 MUSIC BUTTON
 ========================= -->
 
 <button
-
 id="musicButton"
-
-class="music-button"
-
-type="button"
-
-aria-label="Music">
+class="music-button">
 
 ♫
 
 </button>
-
-
-<!-- =========================
-LOADING SCREEN
-========================= -->
-
-<div
-
-id="loadingScreen"
-
-class="loading-screen">
-
-<div class="loading-content">
-
-<div class="loading-spinner"></div>
-
-<p>
-
-Preparing your journey...
-
-</p>
-
-</div>
-
-</div>
-
 
 <!-- =========================
 FINAL BLESSING
 ========================= -->
 
 <section
-
 id="finalSection"
-
 class="final-section">
 
 <div class="final-content">
@@ -283,21 +229,20 @@ class="final-section">
 id="lastMessageButton"
 class="replay-button">
 
-❤️ One Last Message
+✝️ One Last Blessing
 
 </button>
 
 </div>
 
 </section>
+
 <!-- =========================
 FINAL LETTER
 ========================= -->
 
 <section
-
 id="letterSection"
-
 class="letter-section">
 
 <div class="letter-card">
@@ -308,30 +253,19 @@ One Last Thing...
 
 </h2>
 
-<p id="letterText">
-
-</p>
+<p id="letterText"></p>
 
 <button
-
 id="replayButton"
+class="replay-button">
 
-class="replay-button"
-
-type="button">
-
-Replay the Journey ↺
+↺ Replay Journey
 
 </button>
 
 </div>
 
 </section>
-
-
-<!-- =========================
-SCRIPT
-========================= -->
 
 <script src="script.js"></script>
 
