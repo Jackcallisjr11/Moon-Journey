@@ -5,89 +5,55 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Moon Journey</title>
 
-<link rel="stylesheet"
-href="style.css">
+<link rel="stylesheet" href="style.css">
 
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
-rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<!-- =========================
-LOADING
-========================= -->
+<!-- LOADING -->
 
-<div
-id="loadingScreen"
-class="loading-screen">
+<div id="loadingScreen" class="loading-screen">
 
-<div class="loading-content">
+<div class="loader"></div>
 
-<div class="loading-spinner"></div>
-
-<p>
-Preparing your journey...
-</p>
+<p>Preparing your journey...</p>
 
 </div>
 
-</div>
-
-<!-- =========================
-BACKGROUND VIDEO
-========================= -->
+<!-- BACKGROUND VIDEO -->
 
 <video
 id="backgroundVideo"
 class="background-video"
-autoplay
-muted
 loop
-playsinline
-preload="auto">
+muted
+playsinline>
 
-<source
-src="background.mp4"
-type="video/mp4">
+<source src="background.mp4" type="video/mp4">
 
 </video>
 
-<!-- =========================
-OVERLAY
-========================= -->
-
 <div class="overlay"></div>
 
-<!-- =========================
-INTRO
-========================= -->
+<!-- INTRO -->
 
-<section
-id="intro"
-class="intro">
+<section id="intro" class="intro">
 
 <div class="intro-content">
 
 <div class="moon-container">
 
-<img
-src="2009.png"
-alt="Moon"
-class="intro-moon">
+<img src="2009.png" class="intro-moon" alt="Moon">
 
 <div class="moon-glow"></div>
 
@@ -112,16 +78,11 @@ Dr Kat
 <div class="divider"></div>
 
 <p class="intro-quote">
-
 "Every life is written<br>
-
 one chapter at a time."
-
 </p>
 
-<button
-id="beginButton"
-class="begin-button">
+<button id="beginButton" class="begin-button">
 
 Begin the Journey →
 
@@ -142,7 +103,7 @@ class="journey">
 id="slider"
 class="slider">
 
-<!-- Slides will be created by JavaScript -->
+<!-- JavaScript Creates Slides -->
 
 </div>
 
@@ -154,8 +115,7 @@ BOTTOM NAVIGATION
 
 <button
 id="previousButton"
-class="nav-button"
-type="button">
+class="nav-button">
 
 &#10094;
 
@@ -171,8 +131,7 @@ class="progress">
 
 <button
 id="nextButton"
-class="nav-button"
-type="button">
+class="nav-button">
 
 &#10095;
 
@@ -188,8 +147,7 @@ BACKGROUND MUSIC
 
 <audio
 id="backgroundMusic"
-loop
-preload="auto">
+loop>
 
 <source
 src="birthday-music.mp3"
@@ -229,7 +187,7 @@ class="final-section">
 id="lastMessageButton"
 class="replay-button">
 
-✝️ One Last Blessing
+❤️ One Last Message
 
 </button>
 
@@ -238,7 +196,7 @@ class="replay-button">
 </section>
 
 <!-- =========================
-FINAL LETTER
+LETTER
 ========================= -->
 
 <section
@@ -253,7 +211,10 @@ One Last Thing...
 
 </h2>
 
-<p id="letterText"></p>
+<p
+id="letterText">
+
+</p>
 
 <button
 id="replayButton"
@@ -271,5 +232,4 @@ class="replay-button">
 
 </body>
 
-  </html>
-  
+</html>
