@@ -103,7 +103,7 @@ const journeyData = [
 {
     year:2009,
     date:"03 August",
-    image:"assets/moon/2009.png",
+    image:"2009.png",
     phase:"Full Moon",
     illumination:"100%",
     title:"The Beginning",
@@ -113,7 +113,7 @@ const journeyData = [
 {
     year:2010,
     date:"03 August",
-    image:"assets/moon/2010.png",
+    image:"2010.png",
     phase:"Waning Gibbous",
     illumination:"95%",
     title:"A Little Light",
@@ -123,7 +123,7 @@ const journeyData = [
 {
     year:2011,
     date:"03 August",
-    image:"assets/moon/2011.png",
+    image:"2011.png",
     phase:"Last Quarter",
     illumination:"50%",
     title:"Growing Every Day",
@@ -133,7 +133,7 @@ const journeyData = [
 {
     year:2012,
     date:"03 August",
-    image:"assets/moon/2012.png",
+    image:"2012.png",
     phase:"Waxing Crescent",
     illumination:"24%",
     title:"Grace",
@@ -143,7 +143,7 @@ const journeyData = [
 {
     year:2013,
     date:"03 August",
-    image:"assets/moon/2013.png",
+    image:"2013.png",
     phase:"New Moon",
     illumination:"2%",
     title:"Hope",
@@ -152,7 +152,7 @@ const journeyData = [
 {
     year:2014,
     date:"03 August",
-    image:"assets/moon/2014.png",
+    image:"2014.png",
     phase:"Waxing Crescent",
     illumination:"44%",
     title:"Wonder",
@@ -162,7 +162,7 @@ const journeyData = [
 {
     year:2015,
     date:"03 August",
-    image:"assets/moon/2015.png",
+    image:"2015.png",
     phase:"Waning Gibbous",
     illumination:"88%",
     title:"Small Moments",
@@ -172,7 +172,7 @@ const journeyData = [
 {
     year:2016,
     date:"03 August",
-    image:"assets/moon/2016.png",
+    image:"2016.png",
     phase:"New Moon",
     illumination:"1%",
     title:"New Beginnings",
@@ -182,7 +182,7 @@ const journeyData = [
 {
     year:2017,
     date:"03 August",
-    image:"assets/moon/2017.png",
+    image:"2017.png",
     phase:"Waxing Gibbous",
     illumination:"82%",
     title:"Quiet Strength",
@@ -192,7 +192,7 @@ const journeyData = [
 {
     year:2018,
     date:"03 August",
-    image:"assets/moon/2018.png",
+    image:"2018.png",
     phase:"Waning Gibbous",
     illumination:"91%",
     title:"A Beautiful Story",
@@ -201,7 +201,7 @@ const journeyData = [
 {
     year:2019,
     date:"03 August",
-    image:"assets/moon/2019.png",
+    image:"2019.png",
     phase:"Waxing Crescent",
     illumination:"5%",
     title:"Becoming",
@@ -211,7 +211,7 @@ const journeyData = [
 {
     year:2020,
     date:"03 August",
-    image:"assets/moon/2020.png",
+    image:"2020.png",
     phase:"Full Moon",
     illumination:"100%",
     title:"Light Through Every Season",
@@ -221,7 +221,7 @@ const journeyData = [
 {
     year:2021,
     date:"03 August",
-    image:"assets/moon/2021.png",
+    image:"2021.png",
     phase:"Waning Crescent",
     illumination:"32%",
     title:"Faith Over Fear",
@@ -231,7 +231,7 @@ const journeyData = [
 {
     year:2022,
     date:"03 August",
-    image:"assets/moon/2022.png",
+    image:"2022.png",
     phase:"Waxing Crescent",
     illumination:"30%",
     title:"Walking Forward",
@@ -241,7 +241,7 @@ const journeyData = [
 {
     year:2023,
     date:"03 August",
-    image:"assets/moon/2023.png",
+    image:"2023.png",
     phase:"Waning Gibbous",
     illumination:"95%",
     title:"A Gentle Presence",
@@ -250,7 +250,7 @@ const journeyData = [
 {
     year:2024,
     date:"03 August",
-    image:"assets/moon/2024.png",
+    image:"2024.png",
     phase:"Waning Crescent",
     illumination:"14%",
     title:"A New Horizon",
@@ -260,7 +260,7 @@ const journeyData = [
 {
     year:2025,
     date:"03 August",
-    image:"assets/moon/2025.png",
+    image:"2025.png",
     phase:"Waxing Gibbous",
     illumination:"82%",
     title:"Grace In Every Step",
@@ -270,7 +270,7 @@ const journeyData = [
 {
     year:2026,
     date:"03 August",
-    image:"assets/moon/2026.png",
+    image:"2026.png",
     phase:"Waning Gibbous",
     illumination:"75%",
     title:"Seventeen Years Under This Sky",
